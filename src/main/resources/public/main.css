@@ -1,0 +1,192 @@
+@font-face {
+    font-family: 'abster';
+    src: url('./font/abster-webfont.woff') format('woff');
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    height: 100%;
+    width: 100%;
+    /* Ensure html element covers full viewport */
+  }
+
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: '나눔고딕', sans-serif;
+    /* 이제 body가 화면 전체를 꽉 채우고, 이미지도 꽉 채워져서 표시됩니다. */
+  }
+
+  .header {
+    margin-top:20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+  }
+
+  .header h1 a {
+    text-decoration: none;
+    color: white;
+    font-size: 2.5rem;
+    font-family: 'abster';
+    /* Assuming you want to use the custom font here */
+    padding: 100px;
+  }
+
+  .menu-bar {
+    display: flex;
+    list-style: none;
+    gap: 120px; /* 메뉴 항목 사이의 간격을 늘립니다. */
+    align-items: center;
+    padding-left: 40px; /* 왼쪽 여백을 추가합니다. */
+    padding-right: 40px; /* 오른쪽 여백을 추가합니다. */
+  }
+
+  .menu-bar ul {
+    padding: 0;
+    /* 기본 패딩 제거 */
+    margin: 0;
+    /* 기본 마진 제거 */
+    display: flex;
+    /* 항목들을 가로로 배치 */
+  }
+
+  .menu-bar li {
+    display: inline;
+    /* 항목들을 가로로 나열 */
+  }
+
+
+  .menu-bar a {
+    text-decoration: none;
+    color: black;
+    /* 글씨 색상을 검정색으로 변경 */
+    padding: 15px 30px;
+  }
+
+
+
+  .menu-bar div:hover .dropdown-content {
+    display: block;
+    /* 이제 마우스를 올렸을 때 드롭다운 메뉴가 보일 것입니다. */
+  }
+
+  .menu-bar li a {
+    text-decoration: none;
+    color: black;
+    /* Initial text color */
+    padding: 20px;      /*메뉴들 사이의 간격 정리 (작품소개, 찾아보기, 팀원소개)*/
+    transition: background-color 0.4s, color 0.4s;
+    /* Smooth transition for background and text color */
+  }
+
+  .menu-bar li a:hover {
+    background-color: (0, 0, 0, 0.7);
+    /* Dark background on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    color: white;
+    /* Text color changes to white on hover */
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* 어두운 색 배경과 약간의 투명도 */
+    min-width: 140px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    padding: 10px;
+    /* 컨텐츠와 경계 사이의 공간 */
+  }
+
+  .menu-bar .dropdown-content a{
+    color:white;
+  }
+
+  .dropdown-content a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white; /* Set the default text color to white */
+    font-size: 0.9rem;
+  }
+  .dropdown-content a:hover {
+    color: red !important;
+    text-decoration:underline;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .main .container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background-image: url('./images/airplane4.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    /* 배경 이미지가 스크롤에 따라 움직이지 않도록 고정 */
+  }
+
+  .hero h2 {
+    font-family: 'abster';
+    /* Assuming you want to use the custom font here */
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .hero p {
+    font-family: 'abster';
+    /* Assuming you want to use the custom font here */
+    font-size: 1.25rem;
+    color: white;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  .btn {
+    padding: 10px 20px;
+    margin: 100px 10px 0;
+    border: 2px solid black;
+    background: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.4s;
+    text-decoration: none;
+  }
+
+  .btn:hover {
+    background-color: rgba(123, 85, 46, 0.324);
+    color: black;
+  }
