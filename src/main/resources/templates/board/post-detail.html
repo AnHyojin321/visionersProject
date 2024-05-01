@@ -26,7 +26,7 @@
 <div id="passwordModal" style="display:none;">
     <form id="passwordForm" action="/edit-post" method="post">
         <input type="hidden" id="postId" name="postId" th:value="${post.id}">
-        <label for="password">비밀번호:</label>
+        <label for="password">비밀번호 </label>
         <input type="password" id="password" name="password" required>
         <button type="button" onclick="validatePassword()">확인</button>
         <button type="button" onclick="toggleModal(false)">취소</button>
