@@ -41,26 +41,25 @@ public class PostController {
 
         LocalDate currentDate = LocalDate.now();
 
-        // 폼 데이터로 받은 정보를 이용하여 Post 객체 생성
         Post post = new Post();
 
         post.setTitle(title);
         post.setAuthor(author);
         post.setContent(content);
         post.setPassword(password);
-        post.setCalendar(currentDate); // 현재 날짜 설정
+        post.setCalendar(currentDate);
 
         // 데이터베이스에 저장
         postRepository.save(post);
 
-        // 저장 후에는 다시 홈 페이지로 리다이렉트
+        // 저장 후에 다시 게시글 목록 페이지로 리다이렉트
         return "redirect:/index";
     }
 
 
 
 
-    private final PostService postService; // 생성자 주입을 위한 필드 선언
+    private final PostService postService; // 생성자 주입
 
     // 생성자 정의
     public PostController(PostService postService) {
@@ -71,18 +70,18 @@ public class PostController {
     public String showAllPosts(Model model) {
         List<Post> posts = postService.getAllPosts();
         model.addAttribute("posts", posts);
-        return "board/index"; // Assuming your view name is "index.html"
+        return "board/index";
     }
 
     @GetMapping("/posts/{id}")
     public String getPostById(@PathVariable Long id, Model model) {
         Optional<Post> post = postService.getPostById(id);
         if (post.isPresent()) {
-            model.addAttribute("post", post.get());  // Optional에서 Post 객체를 꺼내어 모델에 추가
+            model.addAttribute("post", post.get());
             return "board/post-detail";
         } else {
             model.addAttribute("error", "해당 게시글을 찾을 수 없습니다.");
-            return "errorPage";  // 적절한 오류 페이지나 메시지를 표시할 뷰를 반환
+            return "errorPage";  //아직 에러 페이지 만들진 않음
         }
     }
 
@@ -91,28 +90,23 @@ public class PostController {
     public String editPost(@RequestParam Long postId,
                            @RequestParam String password,
                            Model model) {
-        // 데이터베이스에서 해당 postId의 게시물을 가져옵니다.
+        // 데이터베이스에서 해당 postId의 게시물 가져오기
         Optional<Post> optionalPost = postService.getPostById(postId);
 
         if (optionalPost.isPresent()) {
             Post post = optionalPost.get();
-            // 입력된 비밀번호와 저장된 비밀번호를 비교합니다.
+            // 입력된 비밀번호와 저장된 비밀번호를 비교
             if (post.getPassword().equals(password)) {
-                // 비밀번호가 일치하면 수정 페이지로 이동합니다.
+                // 비밀번호가 일치하면 수정 페이지로 이동
                 model.addAttribute("post", post);
-                return "board/edit"; // 수정 페이지로 이동하는 뷰 이름
+                return "board/edit"; // 수정 페이지로 이동
             } else {
-                // 비밀번호가 일치하지 않으면 에러 메시지를 표시하거나 다시 입력 폼을 보여줄 수 있습니다.
-                // 여기서는 임시로 에러 메시지를 출력합니다.
                 System.out.println("비밀번호가 일치하지 않습니다.");
             }
         } else {
-            // 게시물을 찾을 수 없는 경우 에러 메시지를 출력하거나 다른 처리를 할 수 있습니다.
-            // 여기서는 임시로 에러 메시지를 출력합니다.
             System.out.println("해당하는 게시물을 찾을 수 없습니다.");
         }
 
-        // 비밀번호가 일치하지 않거나 게시물을 찾을 수 없는 경우 게시물 목록 페이지로 리다이렉트합니다.
         return "redirect:/index";
     }
 
