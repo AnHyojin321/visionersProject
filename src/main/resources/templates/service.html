@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VISIONERS</title>
+
+  <link rel="stylesheet" href="/css/service.css">
+  <!-- CSS 파일의 경로를 확인하고 필요에 따라 수정해 주세요 -->
+</head>
+
+<body>
+  <div class="main">
+    <div class="container">
+      <div class="section section1">
+        <div id="header-placeholder"></div>
+        <div class="hero">
+          <h1>Visioners Story</h1>
+          <h2>우리의 서비스</h2>
+          <h2>AI 객체 인식 모델을 활용한 항공기 반입 물품 체크 서비스를 소개합니다.</h2>
+        </div>
+      </div>
+    </div>
+    <div class="section section2">
+      <div class="fade-in-section">
+      <div class="image-container">
+        <div class="content">
+          <h1>가장 확실한</h1>
+          <h2>항공기 반입 물품 체크 서비스</h2>
+          <h3>VISIONERS</h3>
+          <p>통찰력, 앞을 내다보는 시각, 미래의 전망을 뜻하는 '비전(Vision)'을</br>
+            AI의 한 분야인 '객체 인식 기술'이 탑재된 아이디어로 만들어 나가는</br>
+            물품 반입을 새롭게 만들어나가는 '비저너스(Visioners)' 라는 이름을 가지게 되었습니다.</p>
+        </div>
+      </div>
+    </div>
+    <div class="section section3"></div>
+    .</br>
+    .</br>
+    .</br>
+    .</br>
+    .</br>
+
+
+    <div class="section section4">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="../images/logo.png" />
+        </div>
+        <div class="footer-info">
+          <p>팀원: 박선애, 안효진, 박홍민, 지유빈</p>
+          <p>성결대학교 정보통신공학과 졸업작품 프로젝트</p>
+          <p>고객센터: 1234-5678 팩스번호: 123-456-7890</p>
+        </div>
+        <div class="footer-social">
+          <a href="your_facebook_url"><i class="fab fa-facebook-square"></i></a>
+          <a href="your_twitter_url"><i class="fab fa-twitter-square"></i></a>
+          <a href="your_instagram_url"><i class="fab fa-instagram"></i></a>
+          <a href="your_youtube_url"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <script>
+      // header.html의 내용을 가져와서 플레이스홀더에 삽입합니다.
+      fetch('/header.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('header-placeholder').innerHTML = html;
+        })
+        .catch(error => {
+          console.error('Error loading header:', error);
+          console.log('header.html loading error');
+        });
+    </script>
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>VISIONERS</title>
+    <link rel="stylesheet" href="/css/ContactSupport.css">
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="section section1">
+              <div id="header-placeholder"></div>
+                <main>
+                    <section class="contact-form">
+                        <h1>고객 센터</h1>
+                        <p>전화: 010-****-****<br>평일 오전 9:30 - 오후 6:00 (공휴일 제외)</p>
+                        <form action="/contact/send" method="post">
+                            <div class="form-group name-group">
+                                <label for="name">이름 *</label>
+                                <input type="text" id="name" name="name" required>
+                                <span class="required-indicator">* 필수 항목</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">이메일 *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">전화번호 *</label>
+                                <input type="tel" id="phone" name="phone" placeholder="010-****-****" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">주제를 선택해 주세요 *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">주제 선택</option>
+                                    <option value="weight">무게</option>
+                                    <option value="item">물품</option>
+                                    <option value="other">기타</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">메시지 *</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit">보내기</button>
+                            </div>
+                        </form>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+    <script>
+      // header.html의 내용을 가져와서 플레이스홀더에 삽입합니다.
+      fetch('/header.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+      })
+      .catch(error => {
+        console.error('Error loading header:', error);
+        console.log('header.html 못 불러옴');
+      });
+    </script>
+</body>
+</html>
