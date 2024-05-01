@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 작성</title>
+    <!-- 스타일 시트 연결 -->
+</head>
+<body>
+<h1>게시글 작성하기</h1>
+
+<!-- 게시글 작성 폼 -->
+<form method="post" action="/board">
+    <label for="title">제목:</label><br>
+    <input type="text" id="title" name="title" required><br>
+    <label for="author">작성자:</label><br>
+    <input type="text" id="author" name="author" required><br>
+    <label for="content">내용:</label><br>
+    <textarea id="content" name="content" rows="4" required></textarea><br>
+    <label for="password">비밀번호:</label><br>
+    <input type="password" id="password" name="password" required><br>
+    <button type="submit">작성하기</button>
+</form>
+
+<!-- JavaScript 파일 연결 -->
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판</title>
+    <!-- 스타일 시트 연결 -->
+</head>
+<body>
+<h1>게시판</h1>
+
+<!-- 게시글 목록 -->
+<h2>게시글 목록</h2>
+<table>
+    <thead>
+    <tr>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Thymeleaf 반복문을 사용하여 게시글 목록을 표시 -->
+    <tr th:each="post : ${posts}">
+        <td>
+            <!-- 제목(title)을 클릭하면 해당 게시글로 이동 -->
+            <a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}"></a>
+        </td>
+        <td th:text="${post.author}"></td>
+        <td th:text="${post.calendar}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- 게시글 작성 링크 -->
+<a href="/board">게시글 작성하기</a>
+
+<!-- JavaScript 파일 연결 -->
+</body>
+</html>

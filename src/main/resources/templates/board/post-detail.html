@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${post.title}">게시글 상세보기</title>
+    <!-- 스타일 시트 연결 -->
+</head>
+<body>
+<h1 th:text="${post.title}"></h1>
+<p>작성자: <span th:text="${post.author}"></span></p>
+<p>작성일: <span th:text="${post.calendar}"></span></p>
+<p>내용: <span th:text="${post.content}"></span></p>
+
+
+<!-- 게시글 수정 링크 -->
+<a href="javascript:void(0);" onclick="toggleModal(true, '/edit/')">수정</a>
+<!-- 게시글 삭제 링크 -->
+<a href="javascript:void(0);" onclick="toggleModal(true, '/delete/')">삭제</a>
+
+<!-- 게시글 목록으로 돌아가는 링크 -->
+<a href="/index">게시글 목록으로 돌아가기</a>
+
+
+<!-- 비밀번호 입력 -->
+<div id="passwordModal" style="display:none;">
+    <form id="passwordForm" action="/edit-post" method="post">
+        <input type="hidden" id="postId" name="postId" th:value="${post.id}">
+        <label for="password">비밀번호:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="button" onclick="validatePassword()">확인</button>
+        <button type="button" onclick="toggleModal(false)">취소</button>
+    </form>
+</div>
+
+
+<!-- JavaScript 파일 연결 -->
+<script>
+    function toggleModal(show, path) {
+    var modal = document.getElementById('passwordModal');
+    modal.style.display = show ? 'block' : 'none';
+
+    var postId = document.querySelector('span[th\\:text="${post.id}"]').textContent;
+    console.log("postId:", postId); // postId 콘솔에 출력
+
+    if (path.includes("?")) {
+        modal.querySelector('form').action = path + "&postId=" + postId;
+    } else {
+        modal.querySelector('form').action = path + "?postId=" + postId;
+    }
+}
+
+
+
+
+    function validatePassword() {
+        var password = document.getElementById('password').value;
+        var form = document.getElementById('passwordForm');
+        form.submit();
+    }
+</script>
+</body>
+</html>
