@@ -142,33 +142,24 @@ public class PostController {
 
 
     @PostMapping("/delete-post")
-    public String deletePost(@RequestParam Long postId,
-                             @RequestParam String password,
-                             RedirectAttributes redirectAttributes) {
-        // 데이터베이스에서 해당 postId의 게시물을 가져옵니다.
+    public String deletePost(@RequestParam Long postId, @RequestParam String password, RedirectAttributes redirectAttributes) {
         Optional<Post> optionalPost = postService.getPostById(postId);
-
         if (optionalPost.isPresent()) {
             Post post = optionalPost.get();
-            // 입력된 비밀번호와 저장된 비밀번호를 비교합니다.
             if (post.getPassword().equals(password)) {
-                // 비밀번호가 일치하면 게시글을 삭제합니다.
                 postRepository.delete(post);
-                // 삭제 후에는 삭제되었음을 사용자에게 알리고, 게시글 목록 페이지로 리다이렉트합니다.
-                redirectAttributes.addFlashAttribute("message", "게시글이 성공적으로 삭제되었습니다.");
+                redirectAttributes.addFlashAttribute("message", "게시글이 삭제되었습니다.");
                 return "redirect:/index";
             } else {
-                // 비밀번호가 일치하지 않으면 에러 메시지를 표시합니다.
                 redirectAttributes.addFlashAttribute("error", "비밀번호가 일치하지 않습니다.");
+                return "redirect:/index";  // 비밀번호 불일치시 수정 페이지로 리다이렉트
             }
         } else {
-            // 게시물을 찾을 수 없는 경우 에러 메시지를 표시합니다.
             redirectAttributes.addFlashAttribute("error", "해당하는 게시물을 찾을 수 없습니다.");
+            return "redirect:/index";
         }
-
-        // 비밀번호가 일치하지 않거나 게시물을 찾을 수 없는 경우 삭제 페이지로 리다이렉트합니다.
-        return "redirect:/delete-page";
     }
+
 
 
 
