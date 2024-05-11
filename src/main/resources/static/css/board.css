@@ -1,0 +1,221 @@
+
+@font-face {
+    font-family: 'abster';
+    src: url('../font/abster-webfont.woff') format('woff');
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    height: 100%;
+    width: 100%;
+  }
+
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Do Hyeon', sans-serif;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../images/beach.png") no-repeat center center ;
+    background-size: cover;
+  }
+
+  .header {
+    position: fixed;
+    padding-top:30px;
+    padding-bottom:30px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+  }
+
+  .header h1 a {
+    text-decoration: none;
+    color: white;
+    font-size: 2.5rem;
+    font-family: 'abster';
+    padding: 100px;
+  }
+
+
+
+
+
+  .menu-bar li.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center; 
+    background-color: rgba(0, 0, 0, 0.7);
+    /* background-color: rgba(204, 8, 8, 0.9); */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    padding: 10px;
+  }
+  
+  .menu-bar li:hover .dropdown-content {
+    display: block;
+    width: 100%; /* This will make the width match the parent */
+  }
+  
+  /* Make sure that the width of anchor tags inside dropdown matches the parent */
+  .menu-bar li .dropdown-content a {
+    display: block;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    text-align: center; /* Align text to the left or center, based on your preference */
+  }
+  
+
+
+  .menu-bar {
+    display: flex;
+     background: none;
+    list-style: none;
+    gap: 180px; /* 메뉴 항목 사이의 간격을 늘립니다. */
+    align-items: center;
+    padding-left: 40px; /* 왼쪽 여백을 추가합니다. */
+    padding-right: 40px; /* 오른쪽 여백을 추가합니다. */
+  }
+
+  .menu-bar ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+
+  .menu-bar li {
+    display: inline;
+    /* 항목들을 가로로 나열 */
+  }
+
+
+  .menu-bar a {
+    text-decoration: none;
+    color: white;
+    /* 글씨 색상을 검정색으로 변경 */
+    padding: 15px 30px;
+  }
+
+
+
+  .menu-bar div:hover .dropdown-content {
+    display: block;
+  }
+
+  .menu-bar li a {
+    text-decoration: none;
+    color: white;
+    padding: 30px;      /*메뉴들 사이의 간격 정리 (작품소개, 찾아보기, 팀원소개)*/
+    transition: background-color 0.4s, color 0.4s;
+  }
+
+  .menu-bar li a:hover {
+    background-color: (0, 0, 0, 0.7);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    color: white;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+
+
+
+
+  .menu-bar .dropdown-content a{
+    color:white;
+  }
+
+  .dropdown-content a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: black; /* Set the default text color to white */
+    font-size: 0.9rem;
+  }
+  .dropdown-content a:hover {
+    color: red !important;
+    text-decoration:underline;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+
+.form-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 500px;
+    margin-left:485px;
+    margin-top:100px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* 너비에 padding과 border를 포함 */
+}
+
+textarea {
+    resize: none; /* 사용자가 크기 조정 못하게 함 */
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
