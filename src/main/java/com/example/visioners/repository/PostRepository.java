@@ -30,7 +30,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     // 제목에 특정 키워드를 포함하는 게시물을 찾는 쿼리 메서드
     List<Post> findByTitleContaining(String keyword);
 
-    // 작성자에 특정 키워드를 포함하는 게시물을 찾는 쿼리 메서드
+    // 작성자에 특정 키워드를 포함하는 게시물을 찾는  메서드
     List<Post> findByAuthorContaining(String keyword);
 
 }

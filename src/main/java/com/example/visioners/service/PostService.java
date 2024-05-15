@@ -48,7 +48,7 @@ public class PostService {
     }
 
     public void save(Post existingPost) {
-        // 추가적인 저장 로직이 필요한 경우 구현
+
     }
 
     public List<Post> findByTitleContaining(String title) {

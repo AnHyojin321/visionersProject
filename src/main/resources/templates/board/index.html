@@ -33,7 +33,7 @@
             <tbody>
             <tr th:each="post : ${posts.content}">
                 <td>
-                    <!-- 제목(title)을 클릭하면 해당 게시글로 이동 -->
+                    <!-- 제목을 클릭하면 해당 게시글로 이동 -->
                     <a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}"></a>
                 </td>
                 <td th:text="${post.author}"></td>

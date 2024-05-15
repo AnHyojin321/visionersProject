@@ -98,7 +98,7 @@ public class PostController {
     public String editPost(@RequestParam Long postId,
                            @RequestParam String password,
                            Model model) {
-        // 데이터베이스에서 해당 postId의 게시물 가져오기
+        // 데이터베이스에서  postId의 게시물 가져오기
         Optional<Post> optionalPost = postService.getPostById(postId);
 
         if (optionalPost.isPresent()) {
