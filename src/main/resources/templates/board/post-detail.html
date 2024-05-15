@@ -49,6 +49,7 @@
       form.action = path; // 액션 경로 설정
     }
 
+
     function submitForm() {
       var form = document.getElementById('passwordForm');
       form.submit(); // 폼 제출
@@ -73,6 +74,13 @@
         }
       });
     });
+  </script>
+  <script type="text/javascript">
+    /* 스크립트를 추가하여 errorMessage가 존재할 경우 alert를 통해 알림창을 띄웁니다. */
+    var errorMessage = "[[${errorMessage}]]";
+    if (errorMessage) {
+        alert(errorMessage);
+    }
   </script>
 </body>
 

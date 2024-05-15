@@ -5,6 +5,9 @@ import com.example.visioners.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +15,8 @@ import java.util.Optional;
 
 @Service
 public class PostService {
-    private final PostRepository postRepository;
+    @Autowired
+    private PostRepository postRepository;
 
     @Autowired
     public PostService(PostRepository postRepository) {
@@ -21,6 +25,10 @@ public class PostService {
 
     public void savePost(String title, String author, String content, String password, Timestamp calendar) {
         postRepository.postIndex(title, author, content, password, calendar);
+    }
+
+    public Page<Post> getPosts(Pageable pageable) {
+        return postRepository.findAll(pageable);
     }
 
     public List<Post> getAllPosts() {

@@ -32,9 +32,9 @@ def video_feed():
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 # 기본적인 127.0.0.1:5000번 포트로 접속
-@app.route('/domestic')
+@app.route('/')
 def index():
-    return render_template('domestic.html')
+    return render_template('index.html')
 
 
 if __name__ == '__main__':

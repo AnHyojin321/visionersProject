@@ -4,6 +4,9 @@ import com.example.visioners.repository.PostRepository;
 import com.example.visioners.service.PostService;
 import com.example.visioners.dto.Post;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +24,13 @@ import java.util.Optional;
 public class PostController {
     @Autowired
     private PostRepository postRepository;
+
+    @GetMapping("/index")
+    public String listPosts(Model model, @PageableDefault(size = 10) Pageable pageable) {
+        Page<Post> posts = postService.getPosts(pageable);
+        model.addAttribute("posts", posts);
+        return "board/index";
+    }
 
     @RequestMapping("/index.html")
     public String indexPage() {
@@ -63,14 +73,14 @@ public class PostController {
     public PostController(PostService postService) {
         this.postService = postService;
     }
-
+/*
     @GetMapping("/index")
     public String showAllPosts(Model model) {
         List<Post> posts = postService.getAllPosts();
         model.addAttribute("posts", posts);
         return "board/index";
     }
-
+*/
     @GetMapping("/posts/{id}")
     public String getPostById(@PathVariable Long id, Model model) {
         Optional<Post> post = postService.getPostById(id);
@@ -99,7 +109,10 @@ public class PostController {
                 model.addAttribute("post", post);
                 return "board/edit"; // 수정 페이지로 이동
             } else {
-                System.out.println("비밀번호가 일치하지 않습니다.");
+                // 비밀번호가 일치하지 않을 때 메시지를 추가하여 수정 페이지로 이동
+                model.addAttribute("errorMessage", "비밀번호가 일치하지 않습니다.");
+                model.addAttribute("post", post); // 페이지 상태를 그대로 유지
+                return "board/post-detail"; // 수정 페이지로 이동
             }
         } else {
             System.out.println("해당하는 게시물을 찾을 수 없습니다.");
@@ -142,20 +155,25 @@ public class PostController {
 
 
     @PostMapping("/delete-post")
-    public String deletePost(@RequestParam Long postId, @RequestParam String password, RedirectAttributes redirectAttributes) {
+    public String deletePost(@RequestParam Long postId,
+                             @RequestParam String password,
+                             Model model) {
         Optional<Post> optionalPost = postService.getPostById(postId);
+
         if (optionalPost.isPresent()) {
             Post post = optionalPost.get();
             if (post.getPassword().equals(password)) {
                 postRepository.delete(post);
-                redirectAttributes.addFlashAttribute("message", "게시글이 삭제되었습니다.");
+
                 return "redirect:/index";
             } else {
-                redirectAttributes.addFlashAttribute("error", "비밀번호가 일치하지 않습니다.");
-                return "redirect:/index";  // 비밀번호 불일치시 수정 페이지로 리다이렉트
+                // 비밀번호가 일치하지 않을 때 메시지를 추가하여 수정 페이지로 이동
+                model.addAttribute("errorMessage", "비밀번호가 일치하지 않습니다.");
+                model.addAttribute("post", post); // 페이지 상태를 그대로 유지
+                return "board/post-detail"; // 수정 페이지로 이동
             }
         } else {
-            redirectAttributes.addFlashAttribute("error", "해당하는 게시물을 찾을 수 없습니다.");
+            System.out.println("해당하는 게시물을 찾을 수 없습니다.");
             return "redirect:/index";
         }
     }
