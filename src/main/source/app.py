@@ -1,13 +1,15 @@
 from flask import Flask, Response, render_template
 import cv2
 import torch
-from flask_cors import CORS
-import os
+import sys
+import pathlib
 
+if sys.platform == 'win32':
+    pathlib.PosixPath = pathlib.WindowsPath
 
-app = Flask(__name__, template_folder='../resources/templates')
-CORS(app)  # CORS를 전체 앱에 적용
-model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
+app = Flask(__name__)
+
+model = torch.hub.load("ultralytics/yolov5", 'custom', 'lighter2.pt', force_reload=True, skip_validation=True)
 
 def gen_frames():  # 카메라로부터 프레임을 캡처
     cap = cv2.VideoCapture(0)
@@ -16,8 +18,8 @@ def gen_frames():  # 카메라로부터 프레임을 캡처
         if not success:
             break
         else:
-            frame = cv2.resize(frame, (640, 480))  # iframe에 넣기 위해 프레임 크기를 640x480으로 조정
-            results = model(frame)  # YOLOv5 모델로 객체 탐지
+            # YOLOv5 모델로 객체 탐지
+            results = model(frame)
             frame = results.render()[0]  # 탐지 결과로 프레임 렌더
             ret, buffer = cv2.imencode('.jpg', frame)
             frame = buffer.tobytes()
@@ -29,9 +31,11 @@ def video_feed():
     return Response(gen_frames(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
+# 기본적인 127.0.0.1:5000번 포트로 접속
 @app.route('/domestic')
 def index():
     return render_template('domestic.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
