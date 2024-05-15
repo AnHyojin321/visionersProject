@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"> 
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 수정</title>
     <link rel="stylesheet" href="/css/edit.css"> <!-- CSS 파일 연결 -->
@@ -58,6 +58,12 @@
         }); 
     });
 </script>
-
+    <script type="text/javascript">
+        /* 스크립트를 추가하여 errorMessage가 존재할 경우 alert를 통해 알림창을 띄웁니다. */
+        var errorMessage = "[[${errorMessage}]]";
+        if (errorMessage) {
+            alert(errorMessage);
+        }
+    </script>
 </body>
 </html>

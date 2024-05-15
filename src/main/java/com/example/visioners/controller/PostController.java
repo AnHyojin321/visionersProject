@@ -129,7 +129,7 @@ public class PostController {
                              @RequestParam(required = false) String author,
                              @RequestParam(required = false) String content,
                              @RequestParam String password,
-                             RedirectAttributes redirectAttributes) {
+                             Model model) {
         Optional<Post> optionalPost = postService.getPostById(id);
 
         if (optionalPost.isPresent()) {
@@ -141,15 +141,15 @@ public class PostController {
                 // 작성일 변경 없이 저장
                 postRepository.save(post);
 
-                redirectAttributes.addFlashAttribute("message", "게시글이 수정되었습니다.");
+
                 return "redirect:/index";
             } else {
-                redirectAttributes.addFlashAttribute("error", "비밀번호가 일치하지 않습니다.");
+                // 비밀번호가 일치하지 않을 때 메시지를 추가하여 수정 페이지로 이동
+                model.addAttribute("errorMessage", "비밀번호가 일치하지 않습니다.");
+                model.addAttribute("post", post); // 페이지 상태를 그대로 유지
+                return "board/edit"; // 수정 페이지로 이동
             }
-        } else {
-            redirectAttributes.addFlashAttribute("error", "해당하는 게시물을 찾을 수 없습니다.");
         }
-
         return "edit";
     }
 
