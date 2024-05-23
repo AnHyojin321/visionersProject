@@ -7,10 +7,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MainController {
 
-    @GetMapping("/main")
-    public String showMainPage() {
-        return "main"; // templates 디렉토리 내의 main.html을 렌더링합니다.
-    }
     @GetMapping("/cameramain")
     public String showCameraPage() {
         return "cameramain"; // templates 디렉토리 내의 cameramain.html을 렌더링합니다.
