@@ -17,7 +17,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+<<<<<<< HEAD
         SignUp signUp = signUpRepository.findByUserid(username)
+=======
+        SignUp signUp = signUpRepository.findByUsername(username)
+>>>>>>> 8a650a7a5806a17b08f4e3c2898fc74ec3888455
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
 
         return User.builder()
@@ -26,6 +30,9 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .roles("USER") // 기본 역할 설정
                 .build();
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 8a650a7a5806a17b08f4e3c2898fc74ec3888455
 }

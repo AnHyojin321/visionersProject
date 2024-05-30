@@ -18,8 +18,12 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
+<<<<<<< HEAD
                                 .requestMatchers("/", "/header.html", "/home", "/main", "/css/**", "/font/**",
                                         "/images/**", "/js/**", "/signup", "js/start.js", "/static/**", "/api/check-username").permitAll() // 인증 없이 접근 허용
+=======
+                                .requestMatchers("/home", "/login**", "/signup**", "js/start.js", "/static/**").permitAll() // 인증 없이 접근 허용
+>>>>>>> 8a650a7a5806a17b08f4e3c2898fc74ec3888455
                                 .anyRequest().authenticated() // 그 외 모든 경로는 인증 필요
                 )
                 .formLogin(formLogin ->

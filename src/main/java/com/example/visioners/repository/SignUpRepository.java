@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 public interface SignUpRepository extends JpaRepository<SignUp, Long> {
+<<<<<<< HEAD
     Optional<SignUp> findByUserid(String userid);
 
     @Transactional
@@ -21,4 +22,16 @@ public interface SignUpRepository extends JpaRepository<SignUp, Long> {
                 @Param("username") String username,
                 @Param("phone") String phone,
                 @Param("email") String email);
+=======
+    Optional<SignUp> findByUsername(String username);
+
+    @Transactional
+    @Modifying
+    @Query(value = "INSERT INTO visioners.signup (username, userpassword, email, phone) " +
+            "VALUES(:username, :userpassword, :email, :phone)", nativeQuery = true)
+    void signup(@Param("username") String username,
+                @Param("userpassword") String userpassword,
+                @Param("email") String email,
+                @Param("phone") String phone);
+>>>>>>> 8a650a7a5806a17b08f4e3c2898fc74ec3888455
 }
