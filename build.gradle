@@ -29,10 +29,7 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-security'
-<<<<<<< HEAD
     implementation 'org.springframework.security:spring-security-config'
-=======
->>>>>>> 8a650a7a5806a17b08f4e3c2898fc74ec3888455
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
@@ -45,14 +42,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.security:spring-security-oauth2-jose'
-<<<<<<< HEAD
+
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 }
 
-=======
 
-}
->>>>>>> 8a650a7a5806a17b08f4e3c2898fc74ec3888455
+
 
 tasks.named('bootBuildImage') {
     builder = 'paketobuildpacks/builder-jammy-base:latest'

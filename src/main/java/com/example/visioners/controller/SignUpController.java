@@ -23,5 +23,4 @@ public class SignUpController {
             return ResponseEntity.ok("사용 가능한 아이디입니다.");
         }
     }
-
 }

@@ -19,20 +19,21 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
 
-                .requestMatchers("/", "/header.html", "/home", "/main", "/css/**", "/font/**",
-                        "/images/**", "/js/**", "/signup", "js/start.js", "/static/**", "/api/check-username").permitAll() // 인증 없이 접근 허용
+                                .requestMatchers("/", "/header.html", "/home", "/main", "/css/**", "/font/**",
+                                        "/images/**", "/js/**", "/signup", "js/start.js", "/static/**",
+                                        "/admin", "/adminLogin", "/api/check-username").permitAll()
 
-                                .requestMatchers("/home", "/login**", "/signup**", "js/start.js", "/static/**").permitAll() // 인증 없이 접근 허용
+                                .requestMatchers("/admin/**", "/verifyAdmin").permitAll()// 인증 없이 접근 허용
 
-                .anyRequest().authenticated() // 그 외 모든 경로는 인증 필요
+                                .anyRequest().authenticated() // 그 외 모든 경로는 인증 필요
                 )
                 .formLogin(formLogin ->
-                formLogin
-                        .loginPage("/login") // 로그인 페이지 설정
-                        .defaultSuccessUrl("/main", true) // 로그인 성공 시 리다이렉트할 URL 설정
-                        .failureUrl("/login?error=true") // 로그인 실패 시 리다이렉트할 URL 설정
-                        .permitAll() // 로그인 폼에 대한 접근을 허용
-        )
+                        formLogin
+                                .loginPage("/login") // 로그인 페이지 설정
+                                .defaultSuccessUrl("/main", true) // 로그인 성공 시 리다이렉트할 URL 설정
+                                .failureUrl("/login?error=true") // 로그인 실패 시 리다이렉트할 URL 설정
+                                .permitAll() // 로그인 폼에 대한 접근을 허용
+                )
                 .logout(logout ->
                         logout
                                 .logoutUrl("/logout") // 로그아웃 URL 설정

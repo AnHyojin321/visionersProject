@@ -41,6 +41,15 @@
     </div>
   </div>
 
+  <div class="container">
+    <h2>운영자 답변</h2>
+      <sapn th:each="comment : ${comments}">
+        <p th:text="${comment.comment}"></p>
+      </sapn>
+
+  </div>
+
+
   <script>
     function toggleModal(show, path) {
       var modal = document.getElementById('passwordModal');

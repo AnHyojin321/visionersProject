@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>운영자 인증</title>
+</head>
+<body>
+<h1>운영자 인증</h1>
+<form action="#" th:action="@{/verifyAdmin}" method="post">
+    <div>
+        <label for="authCode">인증 번호</label>
+        <input type="text" id="authCode" name="authCode" required>
+    </div>
+    <div>
+        <button type="submit">확인</button>
+    </div>
+</form>
+<div th:if="${param.error}">
+    <p style="color:red;">인증 번호가 일치하지 않습니다.</p>
+</div>
+</body>
+</html>

@@ -16,16 +16,14 @@ public class CustomUserDetailsService implements UserDetailsService {
     private SignUpRepository signUpRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        SignUp signUp = signUpRepository.findByUserid(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+    public UserDetails loadUserByUsername(String userid) throws UsernameNotFoundException {
+        SignUp signUp = signUpRepository.findByUserid(userid)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with userid: " + userid));
 
         return User.builder()
-                .username(signUp.getUsername())
+                .username(signUp.getUserid())
                 .password(signUp.getUserpassword())
-                .roles("USER") // 기본 역할 설정
+                .roles("USER")
                 .build();
     }
-
-
 }

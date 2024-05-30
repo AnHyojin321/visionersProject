@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 페이지</title>
+</head>
+<body>
+<h1>관리자 페이지</h1>
+<p>관리자 페이지입니다.</p>
+
+<h2>게시글 목록</h2>
+<table>
+    <thead>
+    <tr>
+        <th>제목</th>
+        <th>작성자</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="post : ${posts}">
+        <td><a th:href="@{/admin/posts/{id}(id=${post.id})}" th:text="${post.title}"></a></td>
+        <td th:text="${post.author}"></td>
+    </tr>
+    </tbody>
+</table>
+<div>
+        <span th:each="i : ${#numbers.sequence(1, posts.totalPages)}">
+            <a th:href="@{/admin(page=${i-1}, size=${posts.size})}" th:text="${i}"></a>
+        </span>
+</div>
+</div>
+<div th:unless="${posts instanceof T(org.springframework.data.domain.Page)}">
+    <p>No posts available or data type is incorrect.</p>
+</div>
+</body>
+</html>

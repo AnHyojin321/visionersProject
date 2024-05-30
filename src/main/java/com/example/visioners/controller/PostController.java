@@ -1,6 +1,8 @@
 package com.example.visioners.controller;
 
+import com.example.visioners.dto.Comment;
 import com.example.visioners.repository.PostRepository;
+import com.example.visioners.service.CommentService;
 import com.example.visioners.service.PostService;
 import com.example.visioners.dto.Post;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,11 +69,13 @@ public class PostController {
     }
 
 
-    private final PostService postService; // 생성자 주입
+    private final PostService postService;
+    private final CommentService commentService;
 
-    // 생성자 정의
-    public PostController(PostService postService) {
+    @Autowired
+    public PostController(PostService postService, CommentService commentService) {
         this.postService = postService;
+        this.commentService = commentService;
     }
 /*
     @GetMapping("/index")
@@ -85,7 +89,9 @@ public class PostController {
     public String getPostById(@PathVariable Long id, Model model) {
         Optional<Post> post = postService.getPostById(id);
         if (post.isPresent()) {
+            List<Comment> comments = commentService.getCommentsByPostId(id);
             model.addAttribute("post", post.get());
+            model.addAttribute("comments", comments);
             return "board/post-detail";
         } else {
             model.addAttribute("error", "해당 게시글을 찾을 수 없습니다.");

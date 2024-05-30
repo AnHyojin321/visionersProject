@@ -34,6 +34,7 @@ public class Main2Controller {
         return "main"; // main.html 파일을 반환
     }
 
+
     @GetMapping("/signup")
     public String signupForm() {
         return "signup"; // signup.html 파일을 반환
