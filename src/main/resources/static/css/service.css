@@ -1,0 +1,317 @@
+@font-face {
+    font-family: 'abster';
+    src: url('../font/abster-webfont.woff') format('woff');
+  }
+  
+
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    height: 100%;
+    width: 100%;
+    /* Ensure html element covers full viewport */
+  }
+  
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: '나눔고딕', sans-serif;
+    /* 이제 body가 화면 전체를 꽉 채우고, 이미지도 꽉 채워져서 표시됩니다. */
+  }
+  
+  .header {
+    margin-top:20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+  }
+  
+  .header h1 a {
+    text-decoration: none;
+    color: white;
+    font-size: 2.5rem;
+    font-family: 'abster';
+    /* Assuming you want to use the custom font here */
+    padding: 100px;
+  }
+  
+  .menu-bar {
+    display: flex;
+    list-style: none;
+    gap: 120px; /* 메뉴 항목 사이의 간격을 늘립니다. */
+    align-items: center;
+    padding-left: 40px; /* 왼쪽 여백을 추가합니다. */
+    padding-right: 40px; /* 오른쪽 여백을 추가합니다. */
+  }
+  
+  .menu-bar ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .menu-bar li {
+    display: inline;
+    /* 항목들을 가로로 나열 */
+  }
+  
+  
+  .menu-bar a {
+    text-decoration: none;
+    color: black;
+    /* 글씨 색상을 검정색으로 변경 */
+    padding: 15px 30px;
+  }
+  
+  
+  
+  .menu-bar div:hover .dropdown-content {
+    display: block;
+    /* 이제 마우스를 올렸을 때 드롭다운 메뉴가 보일 것입니다. */
+  }
+  
+  .menu-bar li a {
+    text-decoration: none;
+    color: white;
+    /* Initial text color */
+    padding: 20px;      /*메뉴들 사이의 간격 정리 (작품소개, 찾아보기, 팀원소개)*/
+    transition: background-color 0.4s, color 0.4s;
+    /* Smooth transition for background and text color */
+  }
+  
+  .menu-bar li a:hover {
+    background-color: (0, 0, 0, 0.7);
+    /* Dark background on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    color: white;
+    /* Text color changes to white on hover */
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* 어두운 색 배경과 약간의 투명도 */
+    min-width: 140px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    padding: 10px;
+    /* 컨텐츠와 경계 사이의 공간 */
+  }
+  
+  .menu-bar .dropdown-content a{
+    color:white;
+  }
+  
+  .dropdown-content a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white; /* Set the default text color to white */
+    font-size: 0.9rem;
+  }
+  .dropdown-content a:hover {
+    color: red !important;
+    text-decoration:underline;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* .main .container {
+    width: 100%;
+    min-height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url("../images/airplane.jpg") no-repeat;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-attachment: fixed; 
+    background-position: center; 
+    z-index: -1; 
+} */
+
+  
+  .hero h1 {
+    font-family: 'abster';
+    /* Assuming you want to use the custom font here */
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  .hero h2{
+    font-family: 'abster';
+    /* Assuming you want to use the custom font here */
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .hero p {
+    font-size: 1.25rem;
+    color: white;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  }
+  
+
+  .section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    margin: 0; 
+    padding: 0; 
+  }
+
+  .section1 {
+    padding: 50px 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url("../images/airplane-service-section1.jpeg") no-repeat center center scroll;
+    background-size: cover;
+    margin-bottom: 0; /* 섹션 1의 하단 마진 제거 */
+    padding-bottom: 100px; /* 섹션 1의 하단 패딩 제거 */
+  }
+  .section1 .hero{
+    margin-top:100px;
+  }
+
+  
+
+
+
+  .section2 {
+    padding: 100px 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url("../images/service-section2.jpeg") no-repeat center center scroll;
+    background-size: cover;
+    margin-bottom: 0; /* 섹션 1의 하단 마진 제거 */
+    padding-bottom: 0; /* 섹션 1의 하단 패딩 제거 */
+  }
+  
+  .content {
+    flex: 1; /* 텍스트 부분이 유연하게 늘어남 */
+    padding-right: 50px; /* 텍스트와 이미지 사이의 공간 */
+  }
+  
+  .image-container {
+    position: relative;
+    width: 100%; /* 이미지 너비를 조절하세요. */
+    height: auto; /* 높이를 자동으로 설정합니다. */
+    text-align: center; /* 텍스트를 중앙으로 정렬합니다. */
+  }
+  
+  .image-container img {
+    width: 100%;
+    opacity: 0.8; /* 이미지 투명도 조절 */
+  }
+  
+  .section2 h1 {
+    font-size: 3rem; /* 주요 제목의 큰 글씨 크기 */
+    margin-bottom: 1rem; /* h1과 h2 사이의 간격을 줄임 */
+    color: white;
+  }
+  
+  .section2 h2 {
+    font-size: 2.5rem; /* 부제목의 작은 글씨 크기 */
+    margin-bottom: 1rem; /* h2와 h3 사이의 간격을 줄임 */
+    color: white;
+  }
+  
+  .section2 h3 {
+    font-size: 4rem; /* 브랜드 이름의 큰 글씨 크기 */
+    margin-bottom: 3rem; /* h3과 본문 p 사이의 간격을 줄임 */
+    color: rgb(164, 174, 88); /* 브랜드 이름의 색상 */
+  }
+  
+  .section2 p {
+    font-size: 1.25rem; /* 단락의 읽기 쉬운 글씨 크기 */
+    max-width: none; /* 텍스트 블록의 최대 너비 제한을 제거 */
+    line-height: 1.6; /* 가독성을 위한 줄 간격 */
+    margin-top:80px;
+    color:white;
+  }
+
+
+
+
+
+
+
+  .section4 {
+    background-color: #3d3c3ce5; /* 검은색 배경 */
+    color: #fff; /* 흰색 텍스트 */
+    padding: 0.5rem 0; /* 상하 패딩 줄임 */
+    font-family: Arial, sans-serif; /* 글꼴 */
+  }
+  
+  .footer-container {
+    max-width: 1000px; /* 최대 너비 */
+    margin: 0 auto; /* 가운데 정렬 */
+    padding: 0 1rem; /* 좌우 패딩 줄임 */
+    display: flex; /* flexbox 레이아웃 */
+    justify-content: space-between; /* 아이템 간격 조절 */
+    align-items: center; /* 세로 가운데 정렬 */
+  }
+  
+  .footer-info p {
+    margin: 0.25rem 0; /* 단락 간격 줄임 */
+    line-height: 1.3; /* 줄 간격 줄임 */
+    font-size: 0.9rem; /* 글씨 크기 줄임 */
+  }
+  
+  .footer-social a {
+    margin: 0 0.3rem; /* 아이콘 간격 줄임 */
+    font-size: 1.5rem; /* 아이콘 크기 줄임 */
+  }
+  
+  .footer-logo img {
+    max-width: 80px; /* 로고 이미지 크기 줄임 */
+  }
+  .footer-info p {
+    margin: 0.5rem 0; /* 단락 간격 */
+    line-height: 1.5; /* 줄 간격 */
+  }
+  
+  .footer-social a {
+    margin: 0 0.5rem; /* 아이콘 간격 */
+    font-size: 2rem; /* 아이콘 크기 */
+  }
+  
+  .footer-social i {
+    color: #fff; /* 아이콘 색상 */
+  }
+
+
+
+

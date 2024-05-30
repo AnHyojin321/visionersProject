@@ -1,0 +1,195 @@
+
+@font-face {
+  font-family: 'abster';
+  src: url('../font/abster-webfont.woff') format('woff');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: '나눔고딕', sans-serif;
+}
+
+.header {
+  position: fixed;
+  padding-top:30px;
+  padding-bottom:30px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+
+.header h1 a {
+  text-decoration: none;
+  color: white;
+  font-size: 2.5rem;
+  font-family: 'abster';
+  padding: 100px;
+}
+
+
+
+
+
+.menu-bar li.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center; 
+  background-color: rgba(0, 0, 0, 0.7);
+  /* background-color: rgba(204, 8, 8, 0.9); */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  padding: 10px;
+}
+
+.menu-bar li:hover .dropdown-content {
+  display: block;
+  width: 100%; /* This will make the width match the parent */
+}
+
+/* Make sure that the width of anchor tags inside dropdown matches the parent */
+.menu-bar li .dropdown-content a {
+  display: block;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  text-align: center; /* Align text to the left or center, based on your preference */
+}
+
+
+
+.menu-bar {
+  display: flex;
+  list-style: none;
+  gap: 180px; /* 메뉴 항목 사이의 간격을 늘립니다. */
+  align-items: center;
+  padding-left: 40px; /* 왼쪽 여백을 추가합니다. */
+  padding-right: 40px; /* 오른쪽 여백을 추가합니다. */
+}
+
+.menu-bar ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.menu-bar li {
+  display: inline;
+  /* 항목들을 가로로 나열 */
+}
+
+
+.menu-bar a {
+  text-decoration: none;
+  color: black;
+  /* 글씨 색상을 검정색으로 변경 */
+  padding: 15px 30px;
+}
+
+
+
+.menu-bar div:hover .dropdown-content {
+  display: block;
+}
+
+.menu-bar li a {
+  text-decoration: none;
+  color: white;
+  padding: 30px;      /*메뉴들 사이의 간격 정리 (작품소개, 찾아보기, 팀원소개)*/
+  transition: background-color 0.4s, color 0.4s;
+}
+
+.menu-bar li a:hover {
+  background-color: (0, 0, 0, 0.7);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+
+
+
+
+.menu-bar .dropdown-content a{
+  color:white;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: white; /* Set the default text color to white */
+  font-size: 0.9rem;
+}
+.dropdown-content a:hover {
+  color: red !important;
+  text-decoration:underline;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.main .container {
+  width: 100%;
+  min-height: 100vh; /* 뷰포트 높이의 100% */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  url("../images/airplane1.jpg") no-repeat;
+  background-repeat: no-repeat;
+  background-size: cover; /* 화면을 가득 채우도록 */
+  background-attachment: fixed; /* 배경 이미지 고정 */
+  background-position: center; /* 이미지가 화면 중앙에 위치하도록 */
+  z-index: -1; /* 다른 콘텐츠가 이미지 위에 오도록 */
+}
+
+
+.hero h2 {
+  font-family: 'abster';
+  /* Assuming you want to use the custom font here */
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+  font-size: 1.25rem;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 작성</title>
+    <link rel="stylesheet" href="/css/board.css"> <!-- CSS 파일 연결 -->
+</head>
+<body>
+    <div id="header-placeholder"></div>
+<div class="form-container">
+    <h1>게시글 작성하기</h1>
+
+    <!-- 게시글 작성 폼 -->
+    <form method="post" action="/board" class="post-form">
+        <div class="form-group">
+            <label for="title">제목:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="author">작성자:</label>
+            <input type="text" id="author" name="author" required>
+        </div>
+        <div class="form-group">
+            <label for="content">내용:</label>
+            <textarea id="content" name="content" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="password">비밀번호:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="submit-btn">작성하기</button>
+    </form>
+</div>
+<script>
+    // header.html의 내용을 가져와서 플레이스홀더에 삽입합니다.
+    fetch('/header.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('header-placeholder').innerHTML = html;
+        })
+        .catch(error => {
+            console.error('Error loading header:', error);
+            console.log('header.html 못 불러옴');
+        });
+    window.addEventListener('scroll', () => {
+        const elements = document.querySelectorAll('.fade-in-section');
+        elements.forEach((el) => {
+            const position = el.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            if (position - windowHeight <= 0) {
+                el.classList.add('is-visible');
+            }
+        }); 
+    });
+</script>
+</body>
+</html>

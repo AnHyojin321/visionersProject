@@ -1,0 +1,458 @@
+
+@font-face {
+  font-family: 'abster';
+  src: url('../font/abster-webfont.woff') format('woff');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Do Hyeon', sans-serif;
+}
+
+.header {
+  position: fixed;
+  padding-top:30px;
+  padding-bottom:30px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.header h1 a {
+  text-decoration: none;
+  color: white;
+  font-size: 2.5rem;
+  font-family: 'abster';
+  padding: 100px;
+}
+
+
+
+
+
+.menu-bar li.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center; 
+  background-color: rgba(0, 0, 0, 0.7);
+  /* background-color: rgba(204, 8, 8, 0.9); */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  padding: 10px;
+}
+
+.menu-bar li:hover .dropdown-content {
+  display: block;
+  width: 100%; /* This will make the width match the parent */
+}
+
+/* Make sure that the width of anchor tags inside dropdown matches the parent */
+.menu-bar li .dropdown-content a {
+  display: block;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  text-align: center; /* Align text to the left or center, based on your preference */
+}
+
+
+
+.menu-bar {
+  display: flex;
+   background: none;
+  list-style: none;
+  gap: 180px; /* 메뉴 항목 사이의 간격을 늘립니다. */
+  align-items: center;
+  padding-left: 40px; /* 왼쪽 여백을 추가합니다. */
+  padding-right: 40px; /* 오른쪽 여백을 추가합니다. */
+}
+
+.menu-bar ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.menu-bar li {
+  display: inline;
+  /* 항목들을 가로로 나열 */
+}
+
+
+.menu-bar a {
+  text-decoration: none;
+  color: black;
+  /* 글씨 색상을 검정색으로 변경 */
+  padding: 15px 30px;
+}
+
+
+
+.menu-bar div:hover .dropdown-content {
+  display: block;
+}
+
+.menu-bar li a {
+  text-decoration: none;
+  color: white;
+  padding: 30px;      /*메뉴들 사이의 간격 정리 (작품소개, 찾아보기, 팀원소개)*/
+  transition: background-color 0.4s, color 0.4s;
+}
+
+.menu-bar li a:hover {
+  background-color: (0, 0, 0, 0.7);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+
+
+
+
+.menu-bar .dropdown-content a{
+  color:white;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: white; /* Set the default text color to white */
+  font-size: 0.9rem;
+}
+.dropdown-content a:hover {
+  color: red !important;
+  text-decoration:underline;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* .main .container {
+  width: 100%;
+  min-height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+  url("../images/airplane.jpg") no-repeat;
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-attachment: fixed; 
+  background-position: center; 
+  z-index: -1; 
+} */
+
+
+.hero h2 {
+  font-family: 'abster';
+  /* Assuming you want to use the custom font here */
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+  font-family: 'abster';
+  /* Assuming you want to use the custom font here */
+  font-size: 1.25rem;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.btn {
+  padding: 10px 20px;
+  margin: 15px 0px 0;
+  background: none;
+  border: 2px solid rgba(192, 88, 23, 0.8);
+  border-radius: 20px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.4s;
+  text-decoration: none;
+  margin-top: 0;
+}
+
+
+.btn:hover {
+  background-color: rgb(113, 64, 35);
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  margin: 0; 
+  padding: 0; 
+}
+
+.section1 {
+  padding: 50px 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url("../images/airplane.jpg") no-repeat center center scroll;
+  background-size: cover;
+  min-height: 90vh;
+  margin-bottom: 0; /* 섹션 1의 하단 마진 제거 */
+  padding-bottom: 0; /* 섹션 1의 하단 패딩 제거 */
+}
+.section2 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  min-height: 80vh;
+  text-align: center;
+  margin-top: 0; /* 섹션 2의 상단 마진 제거 */
+  padding-top: 0; /* 섹션 2의 상단 패딩 제거 */
+  display:inline;
+}
+
+.section2 .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* 오버레이의 투명도 조절 */
+  z-index: 1;
+}
+
+/* .section2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 1; /
+} */
+
+
+
+.section2, .section2 h1, .section2 h2, .section2 p, .section2 .brandstory {
+  color: black; /* Sets text color to black */
+}
+
+.image-container {
+  position: relative;
+  width: 100%; /* 이미지 너비를 조절하세요. */
+  height: auto; /* 높이를 자동으로 설정합니다. */
+  text-align: center; /* 텍스트를 중앙으로 정렬합니다. */
+}
+
+.image-container img {
+  width: 100%;
+  opacity: 0.8; /* 이미지 투명도 조절 */
+}
+
+
+.image-description {
+  /* 기존 스타일 유지 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  z-index: 2; /* 텍스트가 이미지 위에 표시되도록 z-index 설정 */
+  font-size: 1.5em; /* 문구의 크기 설정 */
+  text-align: center; /* 텍스트를 중앙 정렬 */
+  max-width: 80%; /* 텍스트의 최대 너비를 설정 */
+  padding: 1em; /* 텍스트 주변에 패딩 추가 */
+  border-radius: 10px; /* 텍스트 배경의 모서리를 둥글게 */
+}
+
+.image-description .brandstory{
+  position: relative; 
+  transform: translateY(30px); /* Y축 방향으로 원하는 만큼 이동합니다. */
+}
+
+
+.image-description p:last-child {
+  margin-bottom: 50px; 
+  color:rgba(178, 13, 13, 0.8);
+  font : bold;
+}
+.image-description h2 {
+  margin-top:30px;
+  font-size:1.5rem; 
+}
+.image-description h1 {
+  font-size: 2.5rem; /* 글씨 크기를 조절합니다 */
+  white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정합니다 */
+  overflow: hidden; /* 내용이 너비를 초과하면 숨깁니다 */
+  text-overflow: ellipsis; /* 내용이 너비를 초과하면 말줄임표를 사용합니다 */
+  max-width: 100%; /* 최대 너비를 100%로 설정합니다 */
+  text-align: center; /* 텍스트를 가운데 정렬합니다 */
+  margin-bottom:200px;
+}
+
+
+
+.section3 {
+  background-image: url('../images/airplane-section3.jpeg');
+  background-size: cover; /* 배경 이미지가 컨테이너를 꽉 채우도록 */
+  background-position: center top; /* 이미지가 중앙에 오도록 */
+  background-repeat: no-repeat; /* 이미지가 반복되지 않도록 */
+  padding: 2rem 0;
+}
+
+.section3 h1 {
+  text-align: center;
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  /* background-color: #e7e7e7;
+  display: inline-block;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); */
+}
+
+.person-image {
+  width: 100%; /* This will make the images stretch to the full width of their container */
+  /* ... other styles ... */
+}
+
+.person-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch; /* Align the height of all child elements */
+  flex-wrap: nowrap;
+  gap: 2rem;
+}
+
+.person {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: space-between; /* Distribute space evenly */
+  flex: 1 1 20%; /* Allow flex items to grow and shrink as needed, with a preferred base width */
+  margin: 1rem;
+  text-align: center;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  transition: transform 0.3s;
+  opacity: 0.9;
+}
+
+.person:hover {
+  transform: translateY(-10px);
+}
+
+.person-image {
+  width: 120px; /* 박홍민님 이미지의 너비에 맞춥니다. */
+  height: 120px; /* 높이도 너비와 동일하게 맞춥니다. */
+  border-radius: 50%; /* 원형 이미지를 유지합니다. */
+  object-fit: cover; /* 이미지 비율을 유지하면서, 컨테이너에 맞춰 이미지를 채웁니다. */
+  border: 3px solid #eee; /* 이미지 주변에 테두리를 추가합니다. */
+  align-self: center; /* Flex 컨테이너 내에서 이미지를 중앙에 위치시킵니다. */
+}
+.person h3, .person-description, .person a {
+  align-self: center; /* Center align the child text elements */
+  margin: 0.5rem 0; /* Add margin to the top and bottom of the elements */
+}
+.person-description {
+  color:black;
+  display: flex; /* This will turn the description into a flex container */
+  align-items: center; /* This will vertically center the items in the container */
+  justify-content: center; /* This will horizontally center the items */
+  height: 3em; /* Adjust the height as needed to fit your design */
+  overflow: hidden; /* This will prevent the content from overflowing the set height */
+  text-overflow: ellipsis; /* This will add an ellipsis if the content is too long */
+  white-space: nowrap; /* This will keep the text on a single line */
+}
+
+/* Add this to ensure there's no extra space distribution */
+.person a {
+  margin-top: auto; /* Pushes the link to the bottom of the container */
+}
+
+.section4 {
+  background-color: #3d3c3ce5; /* 검은색 배경 */
+  color: #fff; /* 흰색 텍스트 */
+  padding: 1rem 0; /* 상하 패딩 */
+  font-family: Arial, sans-serif; /* 글꼴 */
+}
+
+.footer-container {
+  max-width: 1200px; /* 최대 너비 */
+  margin: 0 auto; /* 가운데 정렬 */
+  padding: 0 2rem; /* 좌우 패딩 */
+  display: flex; /* flexbox 레이아웃 */
+  justify-content: space-between; /* 아이템 간격 조절 */
+  align-items: center; /* 세로 가운데 정렬 */
+}
+
+.footer-logo img {
+  max-width: 100px; /* 로고 이미지 크기 */
+}
+
+.footer-info p {
+  margin: 0.5rem 0; /* 단락 간격 */
+  line-height: 1.5; /* 줄 간격 */
+}
+
+.footer-social a {
+  margin: 0 0.5rem; /* 아이콘 간격 */
+  font-size: 2rem; /* 아이콘 크기 */
+}
+
+.footer-social i {
+  color: #fff; /* 아이콘 색상 */
+}
+
+
+
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.9s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0px);
+}

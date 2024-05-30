@@ -1,0 +1,305 @@
+
+@font-face {
+    font-family: 'abster';
+    src: url('../font/abster-webfont.woff') format('woff');
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    height: 100%;
+    width: 100%;
+  }
+
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Do Hyeon', sans-serif;
+  }
+
+  .header {
+    margin-bottom: 0;
+    position: fixed;
+    padding-top:30px;
+    padding-bottom:30px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+  }
+
+  .header h1 a {
+    text-decoration: none;
+    color: white;
+    font-size: 2.5rem;
+    font-family: 'abster';
+    padding: 100px;
+  }
+
+  .menu-bar li.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center; 
+    background-color: rgba(0, 0, 0, 0.7);
+    /* background-color: rgba(204, 8, 8, 0.9); */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    padding: 10px;
+  }
+  
+  .menu-bar li:hover .dropdown-content {
+    display: block;
+    width: 100%; /* This will make the width match the parent */
+  }
+  
+  /* Make sure that the width of anchor tags inside dropdown matches the parent */
+  .menu-bar li .dropdown-content a {
+    display: block;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    text-align: center; /* Align text to the left or center, based on your preference */
+  }
+  
+
+
+  .menu-bar {
+    display: flex;
+    list-style: none;
+    gap: 180px; /* 메뉴 항목 사이의 간격을 늘립니다. */
+    align-items: center;
+    padding-left: 40px; /* 왼쪽 여백을 추가합니다. */
+    padding-right: 40px; /* 오른쪽 여백을 추가합니다. */
+  }
+
+  .menu-bar ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+
+  .menu-bar li {
+    display: inline;
+    /* 항목들을 가로로 나열 */
+  }
+
+
+  .menu-bar a {
+    text-decoration: none;
+    color: black;
+    /* 글씨 색상을 검정색으로 변경 */
+    padding: 15px 30px;
+  }
+
+
+
+  .menu-bar div:hover .dropdown-content {
+    display: block;
+  }
+
+  .menu-bar li a {
+    text-decoration: none;
+    color: white;
+    padding: 30px;      /*메뉴들 사이의 간격 정리 (작품소개, 찾아보기, 팀원소개)*/
+    transition: background-color 0.4s, color 0.4s;
+  }
+
+  .menu-bar li a:hover {
+    background-color: (0, 0, 0, 0.7);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    color: white;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .menu-bar .dropdown-content a{
+    color:white;
+  }
+
+  .dropdown-content a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white; /* Set the default text color to white */
+    font-size: 0.9rem;
+  }
+  .dropdown-content a:hover {
+    color: red !important;
+    text-decoration:underline;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .main .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: unset;
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 100px;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../images/airplane4.jpg) no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    z-index: -1;
+}
+
+
+
+
+  .hero h2 {
+    font-family: 'abster';
+    /* Assuming you want to use the custom font here */
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .hero p {
+    font-family: 'abster';
+    /* Assuming you want to use the custom font here */
+    font-size: 1.25rem;
+    color: white;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+
+
+
+
+
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+header img {
+    width: 150px; /* 로고 크기를 적당히 조정하세요 */
+    display: block;
+    margin: 0 auto;
+}
+
+main {
+    max-width: 800px;
+    margin: auto;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+
+.contact-form {
+    width: 100%; /* 폼의 너비를 화면 전체 너비로 설정 */
+    max-width: 960px; /* 최대 너비를 960px로 설정 */
+    margin-top: 0px; 
+    margin-bottom: 0px; 
+    padding: 10px; /* 내부 여백 설정 */
+    background: rgba(255, 255, 255, 0.9); /* 배경색 조정 */
+    border-radius: 10px; /* 모서리 둥글게 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 상자 그림자 추가 */
+}
+
+.contact-form h1 {
+    color: #333;
+    text-align: center;
+}
+
+.contact-form p {
+    text-align: center;
+    color: #666;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #333;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-group button:hover {
+    background-color: #555;
+}
+
+.form-container {
+    width: 100%; /* 전체 너비를 사용 */
+    max-width: 800px; /* 최대 너비 설정 */
+    margin: 0 auto; /* 가운데 정렬 */
+    padding: 20px; /* 안쪽 여백 추가 */
+    background: rgba(255, 255, 255, 0.9); /* 배경 투명도 조정 */
+    border-radius: 10px; /* 모서리 둥글게 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 상자 그림자 추가 */
+}
+
+/* 폼 내부 요소들의 너비를 % 대신 px로 설정하여 더 정확한 제어 가능 */
+.input-field {
+    width: 100%; /* 모든 입력 필드 너비를 폼 컨테이너에 맞춤 */
+}
+
+/* 버튼 너비 조정 */
+.submit-button {
+    width: auto; /* 버튼의 자동 너비 사용 */
+    padding: 10px 20px; /* 버튼의 안쪽 여백 조정 */
+}
+
+.name-group {
+    position: relative; /* 필수 표시를 절대 위치로 설정하기 위한 상대 위치 */
+}
+
+/* 필수 표시를 위한 스타일 */
+.required-indicator {
+    position: absolute; /* 절대 위치 */
+    top: 0; /* 상단에서 0px */
+    right: 0; /* 오른쪽에서 0px */
+    background: rgba(255, 255, 255, 0.9); /* 배경 투명도 조정 */
+    padding: 0 5px; /* 내부 여백 */
+    font-size: 0.8em; /* 글꼴 크기 */
+    color: red; /* 글꼴 색상 */
+    /* 필요에 따라 추가 스타일 */
+}

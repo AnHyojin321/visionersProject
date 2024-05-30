@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+<div id="header-placeholder"></div>
+<div class="container">
+    <h1>게시판</h1>
+    <form id="searchForm" method="get" action="/search" class="search-form">
+        <select name="searchBy" id="searchBy">
+            <option value="title">제목</option>
+            <option value="author">작성자</option>
+        </select>
+        <input type="text" id="keyword" name="keyword" placeholder="검색어 입력">
+        <button type="submit">검색</button>
+    </form>
+
+    <div th:if="${posts instanceof T(org.springframework.data.domain.Page)}">
+        <table class="board-table">
+            <thead>
+            <tr>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="post : ${posts.content}">
+                <td>
+                    <!-- 제목을 클릭하면 해당 게시글로 이동 -->
+                    <a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}"></a>
+                </td>
+                <td th:text="${post.author}"></td>
+                <td th:text="${post.calendar}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <div>
+        <span th:each="i : ${#numbers.sequence(1, posts.totalPages)}">
+            <a th:href="@{/index(page=${i-1}, size=${posts.size})}" th:text="${i}"></a>
+        </span>
+        </div>
+    </div>
+    <div th:unless="${posts instanceof T(org.springframework.data.domain.Page)}">
+        <p>No posts available or data type is incorrect.</p>
+    </div>
+
+    <a href="/board" class="new-post">게시글 작성하기</a>
+
+    <script>
+    // header.html의 내용을 가져와서 플레이스홀더에 삽입합니다.
+    fetch('/header.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('header-placeholder').innerHTML = html;
+        })
+        .catch(error => {
+            console.error('Error loading header:', error);
+            console.log('header.html 못 불러옴');
+        });
+    window.addEventListener('scroll', () => {
+        const elements = document.querySelectorAll('.fade-in-section');
+        elements.forEach((el) => {
+            const position = el.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            if (position - windowHeight <= 0) {
+                el.classList.add('is-visible');
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    /* 스크립트를 추가하여 errorMessage가 존재할 경우 alert를 통해 알림창을 띄웁니다. */
+    var errorMessage = "[[${errorMessage}]]";
+    if (errorMessage) {
+        alert(errorMessage);
+    }
+</script>
+</body>
+
+</html>
