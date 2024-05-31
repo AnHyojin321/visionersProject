@@ -1,0 +1,224 @@
+@font-face {
+  font-family: "abster";
+  src: url("../font/abster-webfont.woff") format("woff");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Do Hyeon", sans-serif;
+  background: white;
+}
+
+body {
+  margin: 0;
+}
+
+.main-header {
+  width: 100%;
+  background: white;
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.logo-text {
+  font-family: "abster", sans-serif;
+}
+
+.main-header .logo a {
+  font-size: 2em;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+.main-header .main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.main-header .main-nav ul li {
+  position: relative;
+}
+
+.main-header .main-nav ul li a {
+  text-decoration: none;
+  color: #000;
+  padding: 10px;
+  transition: color 0.3s;
+}
+
+.main-header .main-nav ul li a:hover {
+  color: #007bff;
+}
+
+.main-header .main-nav ul li:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  padding: 10px;
+  display: block;
+  color: #000;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
+}
+
+.form-container {
+  max-width: 800px;
+  margin: 79px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+}
+
+.board-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.submit-btn {
+  margin-left:692px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 36px;
+  background-color: #17ACFF;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.form-group .toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+
+.footer {
+  width: 100%;
+  background: white;
+  padding: 10px 0;  /* 패딩 줄임 */
+  position: relative;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid #ddd;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;  /* 너비 조절 */
+  margin: 0 auto;
+}
+
+.footer-info,
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-info p,
+.footer-contact p {
+  margin: 2px 0;  /* 간격 줄임 */
+}
+
+.footer-info p.child1,
+.footer-contact p.child2 {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.footer-info p strong,
+.footer-contact p strong {
+  font-weight: bold;
+}
+
+.footer-contact p:first-child {
+  margin-left: 10px; /* 원하는 크기만큼 왼쪽으로 이동 */
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-info,
+  .footer-contact {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.footer .first-child{
+  margin-right:125px;
+}

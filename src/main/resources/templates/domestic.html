@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VISIONERS</title>
+<link rel="stylesheet" href="/css/domestic.css">
+
+<!-- CSS 파일의 경로를 확인하고 필요에 따라 수정해 주세요 -->
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="main">
+    <div class="container">
+      <div id="header-placeholder"></div>
+        <div id="webcam-container" class="webcam-container">
+          <!-- <video id="webcam-video" class="webcam-video"></video> -->
+          <iframe src="http://127.0.0.1:5000/video_feed" width="640" height="480"></iframe>
+          <button class="btn capture-button" onclick="handleCapture()">
+              촬영하기
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- 여기에 라우트를 나타내는 내용을 추가하려면, 별도의 페이지 링크 또는 자바스크립트 로직이 필요합니다. -->
+  </div>
+  <!-- <script src="cameramain.html"></script>
+  <script src="./result/resultok.html"></script> -->
+  <!-- 필요한 JavaScript 파일을 연결하세요. -->
+
+  <script>
+    const videoElement = document.getElementById('webcam-video');
+
+    function accessWebcam() {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+          videoElement.srcObject = stream;
+          videoElement.play();
+        })
+        .catch(error => {
+          console.error("웹캠에 접근 실패:", error);
+        });
+    }
+
+    function handleCapture() {
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+      canvas.width = videoElement.videoWidth;
+      canvas.height = videoElement.videoHeight;
+      context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+      const imageData = canvas.toDataURL("image/png");
+      downloadImage(imageData);
+    }
+
+    function downloadImage(imageData) {
+      const downloadLink = document.createElement("a");
+      downloadLink.href = imageData;
+      downloadLink.download = "captured_image.png";
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    }
+
+    function handlePersonClick(person) {
+      console.log(person + ' clicked');
+      // Add your logic for showing person description here
+    }
+
+    window.onload = accessWebcam;
+    // header.html의 내용을 가져와서 플레이스홀더에 삽입합니다.
+    fetch('/header.html')
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById('header-placeholder').innerHTML = html;
+    })
+    .catch(error => {
+      console.error('Error loading header:', error);
+      console.log('header.html 못 불러옴');
+    });
+  </script>
+
+</body>
+</html>

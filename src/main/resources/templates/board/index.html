@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시판</title>
+  <link rel="stylesheet" href="static/css/index.css">
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+  <main class="board-main-content">
+    <div class="board-main-container">
+      <h1 class="board-title">Q&A</h1>
+      <div class="board-search-container">
+        <form id="searchForm" method="get" action="/search" class="board-search-form">
+          <select name="searchBy" id="searchBy" class="board-search-select">
+            <option value="title">제목</option>
+            <option value="author">작성자</option>
+          </select>
+          <input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요" class="board-search-input">
+          <button type="submit" class="board-search-button">🔍</button>
+        </form>
+        <a href="/board" class="board-new-post-button"><img src="static/images/white_pencil.png" class="board-pencil-icon">글쓰기</a>
+      </div>
+
+      <div th:if="${posts instanceof T(org.springframework.data.domain.Page)}">
+        <table class="board-table">
+          <thead>
+            <tr>
+              <th>NO</th>
+              <th>제목</th>
+              <th>글쓴이</th>
+              <th>작성시간</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="post : ${posts.content}">
+              <td th:text="${post.id}"></td>
+              <td>
+                <a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}"></a>
+              </td>
+              <td th:text="${post.author}"></td>
+              <td th:text="${post.calendar}"></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="board-pagination">
+          <a th:href="@{/index(page=0, size=${posts.size})}" th:if="${!posts.isFirst()}" class="board-page-nav">&lt;&lt;</a>
+          <a th:href="@{/index(page=${posts.pageable.pageNumber - 1}, size=${posts.size})}" th:if="${!posts.isFirst()}"
+            class="board-page-nav">&lt;</a>
+          <span th:each="i : ${#numbers.sequence(1, posts.totalPages)}">
+            <a th:href="@{/index(page=${i-1}, size=${posts.size})}" th:text="${i}" class="board-page-number"
+              th:classappend="${i == posts.pageable.pageNumber + 1} ? 'board-current-page'"></a>
+          </span>
+          <a th:href="@{/index(page=${posts.pageable.pageNumber + 1}, size=${posts.size})}" th:if="${!posts.isLast()}"
+            class="board-page-nav">&gt;</a>
+          <a th:href="@{/index(page=${posts.totalPages - 1}, size=${posts.size})}" th:if="${!posts.isLast()}"
+            class="board-page-nav">&gt;&gt;</a>
+        </div>
+      </div>
+      <div th:unless="${posts instanceof T(org.springframework.data.domain.Page)}">
+        <p>No posts available or data type is incorrect.</p>
+      </div>
+    </div>
+  </main>
+  <div id="footer-placeholder"></div>
+
+  <script>
+    fetch('static/header.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+      })
+      .catch(error => {
+        console.error('Error loading header:', error);
+        console.log('header.html 못 불러옴');
+      });
+    fetch('static/footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-placeholder').innerHTML = html;
+      })
+      .catch(error => {
+        console.error('Error loading footer:', error);
+        console.log('footer.html 못 불러옴');
+      });
+
+    window.addEventListener('scroll', () => {
+      const elements = document.querySelectorAll('.fade-in-section');
+      elements.forEach((el) => {
+        const position = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (position - windowHeight <= 0) {
+          el.classList.add('is-visible');
+        }
+      });
+    });
+    
+  </script>
+  <script type="text/javascript">
+    var errorMessage = "[[${errorMessage}]]";
+    if (errorMessage) {
+      alert(errorMessage);
+    }
+  </script>
+</body>
+
+</html>

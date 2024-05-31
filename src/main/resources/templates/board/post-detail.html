@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${post.title}">게시글 상세보기</title>
+  <link rel="stylesheet" href="/css/post-detail.css">
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+  <div class="container">
+    <h1 class="board-title">Q&A</h1>
+    <div class="post-actions">
+      <button class="edit-button" onclick="toggleModal(true, '/edit-post')"><img src="/images/black-pencil.png"
+          class="pencil-icon" alt="Edit Icon">수정</button>
+      <button class="delete-button" onclick="toggleModal(true, '/delete-post')"><img src="/images/board-delete.png"
+          class="delete-icon" alt="Edit Icon">삭제</button>
+    </div>
+
+    <h2 class="post-title" th:text="${post.title}">게시글 제목</h2>
+    <div class="post-meta">
+      <span class="post-author" th:text="${post.author}">작성자 이름</span>
+      <span class="post-date" th:text="${post.calendar}">작성 날짜</span>
+    </div>
+    <hr class="hr1">
+    <div class="post-content" th:text="${post.content}">
+      게시글 내용
+    </div>
+
+    <hr>
+    <div class="previous-post" th:if="${previousPost != null}">
+      <span class="previous">이전</span>
+      <a th:href="@{'/posts/' + ${previousPost.id}}" th:text="${previousPost.title}">이전 글 제목</a>
+      <span class="previous-date" th:text="${previousPost.calendar}">작성 날짜</span>
+    </div>
+    <hr>
+
+    <a href="/index" class="back-button">목록</a>
+  </div>
+
+  <div id="passwordModal" class="modal">
+    <div class="modal-content">
+      <form id="passwordForm" action="" method="post">
+        <input type="hidden" id="postId" name="postId" th:value="${post.id}">
+        <label for="password">비밀번호: </label>
+        <input type="password" id="password" name="password" required>
+        <div class="modal-buttons">
+          <button type="button" onclick="submitForm()">확인</button>
+          <button type="button" onclick="toggleModal(false)">취소</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div id="footer-placeholder"></div>
+  <script>
+    let currentPath = '';
+
+    function toggleModal(show, path) {
+      var modal = document.getElementById('passwordModal');
+      var form = document.getElementById('passwordForm');
+      modal.style.display = show ? 'block' : 'none';
+      currentPath = path; // 현재 액션 경로를 저장
+    }
+
+    function submitForm() {
+      var form = document.getElementById('passwordForm');
+      form.action = currentPath; // 저장된 액션 경로를 설정
+      form.submit(); // 폼 제출
+    }
+
+    // header.html의 내용을 가져와서 플레이스홀더에 삽입합니다.
+    fetch('/header.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+      })
+      .catch(error => {
+        console.error('Error loading header:', error);
+        console.log('header.html 못 불러옴');
+      });
+    fetch('/footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-placeholder').innerHTML = html;
+      })
+      .catch(error => {
+        console.error('Error loading header:', error);
+        console.log('footer.html 못 불러옴');
+      });
+
+    window.addEventListener('scroll', () => {
+      const elements = document.querySelectorAll('.fade-in-section');
+      elements.forEach((el) => {
+        const position = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (position - windowHeight <= 0) {
+          el.classList.add('is-visible');
+        }
+      });
+    });
+
+    // 스크립트를 추가하여 errorMessage가 존재할 경우 alert를 통해 알림창을 띄웁니다.
+    var errorMessage = "[[${errorMessage}]]";
+    if (errorMessage) {
+      alert(errorMessage);
+    }
+  </script>
+</body>
+
+</html>

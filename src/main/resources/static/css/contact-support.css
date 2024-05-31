@@ -1,0 +1,98 @@
+@font-face {
+  font-family: "abster";
+  src: url("../font/abster-webfont.woff") format("woff");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Do Hyeon", sans-serif;
+  background: linear-gradient(to bottom, #ffffff, #e0fbff);
+  text-align: center;
+}
+
+body {
+  margin: 0;
+}
+
+.main-header {
+  width: 100%;
+  background: white;
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+.logo-text {
+  font-family: "abster", sans-serif;
+}
+.main-header .logo a {
+  font-size: 2em;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+.main-header .main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.main-header .main-nav ul li {
+  position: relative;
+}
+
+.main-header .main-nav ul li a {
+  text-decoration: none;
+  color: #000;
+  padding: 10px;
+  transition: color 0.3s;
+}
+
+.main-header .main-nav ul li a:hover {
+  color: #007bff;
+}
+
+.main-header .main-nav ul li:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  padding: 10px;
+  display: block;
+  color: #000;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
+}
