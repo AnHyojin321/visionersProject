@@ -1,41 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <title>로그인</title>
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-    <script src="js/login.js" defer></script>
-    <script src="js/kakao.js" defer></script>
-</head>
+    <script src="/js/login.js" defer></script>
+    <script src="/js/kakao.js" defer></script>
+    <link rel="stylesheet" href="/css/login.css">
+  </head>
 <body>
-<h1>로그인</h1>
-<form action="/login" method="post">
-    <div>
-        <label for="username">아이디</label>
-        <input type="text" id="username" name="username" required>
-    </div>
-    <div>
-        <label for="password">비밀번호</label>
-        <input type="password" id="password" name="password" required>
-    </div>
-    <div>
-        <button type="submit">로그인</button>
-    </div>
-</form>
-
-<div>
-    <a href="/signup">회원가입</a>
-    <a href="/adminLogin" id="admin-login-btn">운영자 로그인</a>
-</div>
-
-<h2>소셜 로그인</h2>
-<div>
-    <a href="#" id="kakao-login-btn">카카오 로그인</a>
-</div>
-
-<div>
-    <a href="/forgot-password">비밀번호를 잊어버리셨나요?</a>
-</div>
-
+  <div id="header-placeholder"></div>
+    <main class="main-content">
+      <main class="main">
+        <div class="login-container">
+          <h1>로그인</h1>
+          <form action="/login" method="post">
+            <div>
+              <label for="username">아이디(이메일)</label>
+              <input type="text" id="username1" name="username" required>
+            </div>
+            <div>
+              <label for="password">비밀번호</label>
+              <input type="password" id="password1" name="password" required>
+            </div>
+            <div>
+              <button type="submit">로그인</button>
+            </div>
+          </form>
+    
+          <div class="signup-forgotpw">
+            <a href="/signup">회원가입</a>
+            <span class="separator">|</span>
+            <a href="/adminLogin" id="admin-login-btn">운영자 로그인</a>
+            <span class="separator">|</span>
+            <a href="/forgot-password" class="forgot-password">비밀번호 찾기</a>
+          </div>
+    
+          <div class="social-login">
+            <a href="#" id="kakao-login-btn">카카오 로그인</a>
+          </div>
+        </div>
+      </main>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('/header.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+      })
+      .catch(error => {
+        console.error('Error loading header:', error);
+        console.log('header.html 못 불러옴');
+      });
+    fetch('/footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-placeholder').innerHTML = html;
+      })
+      .catch(error => {
+        console.error('Error loading header:', error);
+        console.log('footer.html 못 불러옴');
+      });
+    </script>
 </body>
 </html>

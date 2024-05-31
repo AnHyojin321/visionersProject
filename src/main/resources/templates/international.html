@@ -1,43 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VISIONERS</title>
-<link rel="stylesheet" href="/css/cameramain.css">
-<!-- CSS 파일의 경로를 확인하고 필요에 따라 수정해 주세요 -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VISIONERS</title>
+  <link rel="stylesheet" href="/css/international.css">
 </head>
+
 <body>
-  <div class="main">
-    <div class="container">
-      <div id="header-placeholder"></div>
-      <div class="hero">
-        <h2>항공사를 선택해 주세요</h2>
-        <p>
-          이용하려는 항공사를 선택하세요
-        </p>
-        <a href="/domestic" class="btn">
-          아시아나
-        </a>
-        <a href="/domestic" class="btn">
-          대한항공
-        </a>
+  <div id="header-placeholder"></div>
+  <main class="main-content">
+  <section class="main-section">
+    <div class="hero-content">
+      <h1>항공기 반입 물품 체크 서비스</h1>
+      <p>이용하려는 비행편이 어디인지 선택해주세요</p>
+      <div class="buttons">
+        <a href="/domestic" class="button">아시아나</a>
+        <a href="/domestic" class="button">대한항공</a>
       </div>
     </div>
-    <!-- 여기에 라우트를 나타내는 내용을 추가하려면, 별도의 페이지 링크 또는 자바스크립트 로직이 필요합니다. -->
-  </div>
-
+    <img src="/images/cameramain-airplane.png" alt="Airplane" class="hero-image">
+  </section>
+  </main>
+  <div id="footer-placeholder"></div>
   <script>
-    // header.html의 내용을 가져와서 플레이스홀더에 삽입합니다.
     fetch('/header.html')
-    .then(response => response.text())
-    .then(html => {
-      document.getElementById('header-placeholder').innerHTML = html;
-    })
-    .catch(error => {
-      console.error('Error loading header:', error);
-      console.log('header.html 못 불러옴');
-    });
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+      })
+      .catch(error => {
+        console.error('Error loading header:', error);
+        console.log('header.html 못 불러옴');
+      });
+    fetch('/footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-placeholder').innerHTML = html;
+      })
+      .catch(error => {
+        console.error('Error loading header:', error);
+        console.log('footer.html 못 불러옴');
+      });
   </script>
 </body>
+
 </html>

@@ -1,43 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VISIONERS</title>
   <link rel="stylesheet" href="/css/cameramain.css">
-  <!-- CSS 파일의 경로를 확인하고 필요에 따라 수정해 주세요 -->
 </head>
 
 <body>
-  <div class="main">
-    <div class="container">
-      <div id="header-placeholder"></div>
-      <div class="hero">
-        <h2>항공기 반입 물품 체크 서비스</h2>
-        <p>
-          사용하려는 비행 편이 어디인지 선택해 주세요
-        </p>
-        <a href="/international" class="btn">
-          국제선
-        </a>
-        <a href="/domestic" class="btn">
-          국내선
-        </a>
+  <div id="header-placeholder"></div>
+  <main class="main-content">
+  <section class="main-section">
+    <div class="hero-content">
+      <h1>항공기 반입 물품 체크 서비스</h1>
+      <p>이용하려는 비행편이 어디인지 선택해주세요</p>
+      <div class="buttons">
+        <a href="/international" class="button">국제선</a>
+        <a href="/domestic" class="button">국내선</a>
       </div>
     </div>
-  </div>
+    <img src="/images/cameramain-airplane.png" alt="Airplane" class="hero-image">
+  </section>
+  </main>
+  <div id="footer-placeholder"></div>
   <script>
-    // header.html의 내용을 가져와서 플레이스홀더에 삽입합니다.
     fetch('/header.html')
-    .then(response => response.text())
-    .then(html => {
-      document.getElementById('header-placeholder').innerHTML = html;
-    })
-    .catch(error => {
-      console.error('Error loading header:', error);
-      console.log('header.html 못 불러옴');
-    });
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+      })
+      .catch(error => {
+        console.error('Error loading header:', error);
+        console.log('header.html 못 불러옴');
+      });
+    fetch('/footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-placeholder').innerHTML = html;
+      })
+      .catch(error => {
+        console.error('Error loading header:', error);
+        console.log('footer.html 못 불러옴');
+      });
   </script>
 </body>
 

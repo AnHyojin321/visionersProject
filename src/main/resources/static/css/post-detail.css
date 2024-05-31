@@ -1,273 +1,315 @@
-
 @font-face {
-    font-family: 'abster';
-    src: url('../font/abster-webfont.woff') format('woff');
-  }
-
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  html {
-    height: 100%;
-    width: 100%;
-  }
-
-  body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Do Hyeon', sans-serif;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("../images/beach.png") no-repeat center center ;
-    background-size: cover;
-  }
-
-  .header {
-    position: fixed;
-    padding-top:30px;
-    padding-bottom:30px;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 10;
-  }
-
-  .header h1 a {
-    text-decoration: none;
-    color: white;
-    font-size: 2.5rem;
-    font-family: 'abster';
-    padding: 100px;
-  }
-
-
-
-
-
-  .menu-bar li.dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    left: 0;
-    right: 0;
-    text-align: center; 
-    background-color: rgba(0, 0, 0, 0.7);
-    /* background-color: rgba(204, 8, 8, 0.9); */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-    padding: 10px;
-  }
-  
-  .menu-bar li:hover .dropdown-content {
-    display: block;
-    width: 100%; /* This will make the width match the parent */
-  }
-  
-  /* Make sure that the width of anchor tags inside dropdown matches the parent */
-  .menu-bar li .dropdown-content a {
-    display: block;
-    color: white;
-    padding: 10px 15px;
-    text-decoration: none;
-    text-align: center; /* Align text to the left or center, based on your preference */
-  }
-  
-
-
-  .menu-bar {
-    display: flex;
-     background: none;
-    list-style: none;
-    gap: 180px; /* 메뉴 항목 사이의 간격을 늘립니다. */
-    align-items: center;
-    padding-left: 40px; /* 왼쪽 여백을 추가합니다. */
-    padding-right: 40px; /* 오른쪽 여백을 추가합니다. */
-  }
-
-  .menu-bar ul {
-    padding: 0;
-    margin: 0;
-    display: flex;
-  }
-
-  .menu-bar li {
-    display: inline;
-    /* 항목들을 가로로 나열 */
-  }
-
-
-  .menu-bar a {
-    text-decoration: none;
-    color: white;
-    /* 글씨 색상을 검정색으로 변경 */
-    padding: 15px 30px;
-  }
-
-
-
-  .menu-bar div:hover .dropdown-content {
-    display: block;
-  }
-
-  .menu-bar li a {
-    text-decoration: none;
-    color: white;
-    padding: 30px;      /*메뉴들 사이의 간격 정리 (작품소개, 찾아보기, 팀원소개)*/
-    transition: background-color 0.4s, color 0.4s;
-  }
-
-  .menu-bar li a:hover {
-    background-color: (0, 0, 0, 0.7);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    color: white;
-  }
-
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-
-  .menu-bar .dropdown-content a{
-    color:white;
-  }
-
-  .dropdown-content a {
-    display: block;
-    padding: 10px 15px;
-    text-decoration: none;
-    color: black; /* Set the default text color to white */
-    font-size: 0.9rem;
-  }
-  .dropdown-content a:hover {
-    color: red !important;
-    text-decoration:underline;
-  }
-
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  .container {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 500px;
-    margin-left:485px;
-    margin-top:100px;
+  font-family: "abster";
+  src: url("../font/abster-webfont.woff") format("woff");
 }
 
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-    align-items: center;
-    justify-content: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    margin-left:596px;
-    margin-top:400px;
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Do Hyeon", sans-serif;
+  text-align: center;
 }
 
-.input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+body {
+  margin: 0;
 }
 
-.buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
 }
 
-.container h1 {
-    color: #333;
-    margin-bottom: 10px;
+.main-header {
+  width: 100%;
+  background: #FFFFFF;
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.container p {
-    color: #666;
-    line-height: 1.6;
+.logo-text {
+  font-family: "abster", sans-serif;
 }
 
-.container a {
-    display: inline-block;
-    margin: 10px 10px 10px 0;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
+.main-header .logo a {
+  font-size: 2em;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
 }
 
-.container a:hover {
-    background-color: #0056b3;
+.main-header .main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.main-header .main-nav ul li {
+  position: relative;
+}
+
+.main-header .main-nav ul li a {
+  text-decoration: none;
+  color: #000;
+  padding: 10px;
+  transition: color 0.3s;
+}
+
+.main-header .main-nav ul li a:hover {
+  color: #007bff;
+}
+
+.main-header .main-nav ul li:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  padding: 10px;
+  display: block;
+  color: #000;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
+}
+
+.main-content {
+  margin-top: 100px; /* Adjusted height for the header */
+  margin-bottom: 80px; /* Adjusted height for the footer */
+  padding: 20px;
+  flex: 1;
+}
+.board-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.pencil-icon{
+  width: 20px; 
+  height: auto; 
+  margin-right: 5px; 
+}
+.delete-icon{
+  width: 20px; 
+  height: auto; 
+  margin-right: 5px; 
+}
+.post-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  margin-right: 100px;
+}
+.edit-button,
+.delete-button,
+.back-button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #555;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.post-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  text-align: left;
+  margin-left: 260px;
+}
+.post-meta {
+  margin-right: 900px;
+  margin-left: 263px;
+  font-size: 0.9rem;
+  color: #555;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+hr {
+  border: none;
+  border-top: 2px solid #eee;
+  width: 65%; /* Adjust the width as needed */
+  margin: 0px auto; /* Center the hr element */
+}
+
+.post-content {
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 64%;
+  margin-bottom: 36px;
+  text-align: left;
+  margin-left: 260px;
+  margin-top: 36px;
+}
+
+.back-button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #555;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  text-decoration: none;
+}
+.content-wrapper{
+  background-color:red;
+}
+.content-wrapper .reply{
+  background-color: blue;
 }
 
 
 
 
-.modal h3 {
-    margin-bottom: 15px;
+.main-content h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
-.input, .modal input[type=password] {
-    width: 100%;
-    padding: 10px;
-    margin-top: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.main-content p {
+  margin-bottom: 1rem;
+  line-height: 1.5;
 }
 
-.buttons {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
+.main-content .buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 1rem;
 }
 
-.buttons button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.main-content .buttons a {
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s;
 }
 
-.buttons button[type="submit"] {
-    background-color: #007BFF;
-    color: white;
+.main-content .buttons a:hover {
+  background-color: #0056b3;
 }
 
-.buttons button[type="button"] {
-    background-color: #ccc;
-    color: black;
+.main-content .pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
 }
 
-.buttons button:hover {
-    opacity: 0.8;
+.main-content .pagination a {
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.main-content .pagination a:hover {
+  background-color: #0056b3;
+}
+
+.main-content .modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  padding-top: 60px;
+}
+
+.main-content .modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.main-content .modal-content .buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.main-content .modal-content .buttons button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.main-content .modal-content .buttons button:hover {
+  background-color: #0056b3;
+}
+
+.footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f8f9fa;
+  padding: 15px 0; 
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  height: 70px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  width: 50%;
+  margin: 0 auto; 
+}
+
+.footer p {
+  margin: 0; 
 }

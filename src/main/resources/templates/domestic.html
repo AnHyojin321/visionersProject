@@ -9,24 +9,21 @@
 <!-- CSS 파일의 경로를 확인하고 필요에 따라 수정해 주세요 -->
 </head>
 <body>
+  <div id="header-placeholder"></div>
   <div class="main">
     <div class="container">
       <div id="header-placeholder"></div>
         <div id="webcam-container" class="webcam-container">
           <!-- <video id="webcam-video" class="webcam-video"></video> -->
           <iframe src="http://127.0.0.1:5000/video_feed" width="640" height="480"></iframe>
-          <button class="btn capture-button" onclick="handleCapture()">
+          <button class="styled-button" onclick="handleCapture()">
               촬영하기
           </button>
+          </div>
         </div>
       </div>
     </div>
-    <!-- 여기에 라우트를 나타내는 내용을 추가하려면, 별도의 페이지 링크 또는 자바스크립트 로직이 필요합니다. -->
   </div>
-  <!-- <script src="cameramain.html"></script>
-  <script src="./result/resultok.html"></script> -->
-  <!-- 필요한 JavaScript 파일을 연결하세요. -->
-
   <script>
     const videoElement = document.getElementById('webcam-video');
 
