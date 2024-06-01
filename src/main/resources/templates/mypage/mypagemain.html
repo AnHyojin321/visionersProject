@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>마이페이지</title>
+  <link rel="stylesheet" href="/css/mypagemain.css">
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+  <main class="main-content">
+    <div class="mypage-container">
+      <h1 class="mypage-title">마이페이지</h1>
+      <h2 class="welcome-message"><span class="username" th:text="${username}"></span>님 반가워요!</h2>
+      <div class="info-box">
+        <div class="info-item">
+          <a href="/mypage/userinfo">회원 정보</a>
+        </div>
+        <div class="info-item">
+          <a href="/user-posts">내가 쓴 게시글</a>
+        </div>
+      </div>
+      <div class="logout-section">
+        <a href="/logout" class="logout-btn">로그아웃</a>
+        <a href="/delete-account" class="delete-account-btn">회원 탈퇴</a>
+      </div>
+    </div>
+  </main>
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch('/header.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+      })
+      .catch(error => {
+        console.error('Error loading header:', error);
+        console.log('header.html 못 불러옴');
+      });
+    fetch('/footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-placeholder').innerHTML = html;
+      })
+      .catch(error => {
+        console.error('Error loading footer:', error);
+        console.log('footer.html 못 불러옴');
+      });
+  </script>
+</body>
+
+</html>

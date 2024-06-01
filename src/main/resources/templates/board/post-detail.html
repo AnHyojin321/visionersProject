@@ -13,10 +13,12 @@
   <main class="main-content">
     <h1 class="board-title">Q&A</h1>
     <div class="post-actions">
-      <button class="edit-button" onclick="toggleModal(true, '/edit-post')"><img src="/images/black-pencil.png"
-          class="pencil-icon" alt="Edit Icon">수정</button>
-      <button class="delete-button" onclick="toggleModal(true, '/delete-post')"><img src="/images/board-delete.png"
-          class="delete-icon" alt="Edit Icon">삭제</button>
+      <button class="edit-button" onclick="toggleModal(true, '/edit-post')">
+        <img src="/images/black-pencil.png" class="pencil-icon" alt="Edit Icon">수정
+      </button>
+      <button class="delete-button" onclick="toggleModal(true, '/delete-post')">
+        <img src="/images/board-delete.png" class="delete-icon" alt="Delete Icon">삭제
+      </button>
     </div>
     <h2 class="post-title" th:text="${post.title}">게시글 제목</h2>
     <div class="post-meta">
@@ -29,49 +31,51 @@
     </div>
     <hr>
 
-
     <!-- 게시글 목록으로 돌아가는 링크 -->
     <a href="/index" class="back-button">목록</a>
-    </div>
-
-    <!-- 비밀번호 입력 -->
-    <div id="passwordModal" class="modal">
-      <div class="modal-content">
-        <form id="passwordForm" action="" method="post">
-          <input type="hidden" id="postId" name="postId" th:value="${post.id}">
-          <label for="password">비밀번호: </label>
-          <input type="password" id="password" name="password" required>
-          <div class="buttons">
-            <button type="button" onclick="submitForm()">확인</button>
-            <button type="button" onclick="toggleModal(false)">취소</button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <div class="content-wrapper">
-      <h2>운영자 답변</h2>
-      <div class="reply">
-        <span th:each="comment : ${comments}">
-          <p th:text="${comment.comment}"></p>
-        </span>
-      </div>
-    </div>
   </main>
+
+  <!-- 비밀번호 입력 -->
+  <div id="passwordModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <form id="passwordForm" action="" method="post">
+        <input type="hidden" id="postId" name="postId" th:value="${post.id}">
+        <label for="password">비밀번호: </label>
+        <input type="password" id="password" name="password" required>
+        <div class="buttons">
+          <button type="button" onclick="submitForm()">확인</button>
+          <button type="button" onclick="toggleModal(false)">취소</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="content-wrapper">
+    <h2>운영자 답변</h2>
+    <div class="reply">
+      <span th:each="comment : ${comments}">
+        <p th:text="${comment.comment}"></p>
+      </span>
+    </div>
+  </div>
+
   <div id="footer-placeholder"></div>
 
   <script>
-    function toggleModal(show, path) {
+    function toggleModal(show, path = '') {
       var modal = document.getElementById('passwordModal');
       var form = document.getElementById('passwordForm');
       modal.style.display = show ? 'block' : 'none';
-      form.action = path; // 액션 경로 설정
+      if (show && path) {
+        form.action = path; // 액션 경로 설정
+      }
     }
 
     function submitForm() {
       var form = document.getElementById('passwordForm');
       form.submit(); // 폼 제출
     }
+
     // header.html의 내용을 가져와서 플레이스홀더에 삽입합니다.
     fetch('/header.html')
       .then(response => response.text())

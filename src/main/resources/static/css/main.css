@@ -505,7 +505,7 @@ body {
 
 .section1 {
   width: 100%;
-  height: calc(100vh - 0px); /* Full viewport height minus header height */
+  height: calc(100vh - 0px); 
   background: linear-gradient(to bottom, #ffffff, #e0fbff);
   display: flex;
   flex-direction: column;

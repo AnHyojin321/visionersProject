@@ -39,6 +39,15 @@ public class MainController {
     public String showYoobinPage() {
         return "yoobin"; //
     }
+    @GetMapping("/mypagemain")
+    public String showMyPageMainPage() {
+        return "mypagemain"; //
+    }
+    @GetMapping("/userinfo")
+    public String showUserInfoPage() {
+        return "userinfo"; //
+    }
+
 
 
     @GetMapping("/contact-support")
