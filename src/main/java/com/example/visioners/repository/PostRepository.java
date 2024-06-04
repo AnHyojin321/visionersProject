@@ -17,12 +17,11 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO visioners.post(title, author, content, password, calendar) " +
-            "VALUES(:title, :author, :content, :password, :calendar)", nativeQuery = true)
+    @Query(value = "INSERT INTO visioners.post(title, author, content, calendar) " +
+            "VALUES(:title, :author, :content, :calendar)", nativeQuery = true)
     public void postIndex(@Param("title") String title,
                           @Param("author") String author,
                           @Param("content") String content,
-                          @Param("password") String password,
                           @Param("calendar") Timestamp calendar);
 
 

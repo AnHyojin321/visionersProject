@@ -31,7 +31,6 @@
             <tr>
               <th>NO</th>
               <th>제목</th>
-              <th>글쓴이</th>
               <th>작성시간</th>
             </tr>
           </thead>
@@ -41,7 +40,6 @@
               <td>
                 <a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}"></a>
               </td>
-              <td th:text="${post.author}"></td>
               <td th:text="${post.calendar}"></td>
             </tr>
           </tbody>

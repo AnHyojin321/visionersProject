@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 public interface SignUpRepository extends JpaRepository<SignUp, Long> {
+    Optional<SignUp> findByUsername(String username);
+
     Optional<SignUp> findByUserid(String userid);
 
     @Transactional
@@ -21,4 +23,5 @@ public interface SignUpRepository extends JpaRepository<SignUp, Long> {
                 @Param("username") String username,
                 @Param("phone") String phone,
                 @Param("email") String email);
+
 }

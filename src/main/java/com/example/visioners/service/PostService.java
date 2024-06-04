@@ -23,8 +23,8 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public void savePost(String title, String author, String content, String password, Timestamp calendar) {
-        postRepository.postIndex(title, author, content, password, calendar);
+    public void savePost(String title, String author, String content, Timestamp calendar) {
+        postRepository.postIndex(title, author, content, calendar);
     }
 
     public Page<Post> getPosts(Pageable pageable) {

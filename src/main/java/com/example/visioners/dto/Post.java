@@ -16,7 +16,6 @@ public class Post {
     private String title;
     private String author;
     private String content;
-    private String password;
     private LocalDate calendar;
 
 
@@ -59,15 +58,6 @@ public class Post {
         this.content = content;
     }
 
-    public String getPassword() {
-
-        return password;
-    }
-
-    public void setPassword(String password) {
-
-        this.password = password;
-    }
 
     public LocalDate getCalendar() {
         return calendar;

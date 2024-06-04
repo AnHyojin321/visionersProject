@@ -19,7 +19,7 @@ public class SearchController {
     public SearchController(PostService postService) {
         this.postService = postService;
     }
-
+/*
     @GetMapping("/search")
     public String searchPosts(@RequestParam String searchBy, @RequestParam String keyword, Model model) {
         List<Post> searchResults = new ArrayList<>();  // 빈 리스트로 초기화
@@ -35,5 +35,5 @@ public class SearchController {
         model.addAttribute("posts", searchResults);
         return "board/search-results";  // 검색 결과를 보여줄 템플릿의 이름
     }
-
+*/
 }

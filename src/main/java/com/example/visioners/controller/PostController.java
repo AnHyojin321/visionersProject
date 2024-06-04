@@ -1,7 +1,9 @@
 package com.example.visioners.controller;
 
 import com.example.visioners.dto.Comment;
+import com.example.visioners.dto.SignUp;
 import com.example.visioners.repository.PostRepository;
+import com.example.visioners.repository.SignUpRepository;
 import com.example.visioners.service.CommentService;
 import com.example.visioners.service.PostService;
 import com.example.visioners.dto.Post;
@@ -10,11 +12,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import java.security.Principal;
 import java.time.LocalDate;
 
 
@@ -26,6 +31,9 @@ import java.util.Optional;
 public class PostController {
     @Autowired
     private PostRepository postRepository;
+
+    @Autowired
+    private SignUpRepository signUpRepository;
 
     @GetMapping("/index")
     public String listPosts(Model model, @PageableDefault(size = 10) Pageable pageable) {
@@ -47,18 +55,24 @@ public class PostController {
 
     @PostMapping("/board")
     public String savePost(@RequestParam String title,
-                           @RequestParam String author,
                            @RequestParam String content,
-                           @RequestParam String password) {
+                           Principal principal) { // Principal 객체 추가
+
+        // 현재 로그인한 사용자의 username 가져오기
+        String username = principal.getName();
+
+        // username을 기반으로 회원 정보 조회
+        SignUp author = signUpRepository.findByUsername(username).orElseThrow(
+                () -> new UsernameNotFoundException("User not found")
+        );
 
         LocalDate currentDate = LocalDate.now();
 
         Post post = new Post();
 
         post.setTitle(title);
-        post.setAuthor(author);
+     /*   post.setAuthor(author);*/ // SignUp 엔티티를 직접 할당
         post.setContent(content);
-        post.setPassword(password);
         post.setCalendar(currentDate);
 
         // 데이터베이스에 저장
@@ -77,14 +91,14 @@ public class PostController {
         this.postService = postService;
         this.commentService = commentService;
     }
-/*
-    @GetMapping("/index")
-    public String showAllPosts(Model model) {
-        List<Post> posts = postService.getAllPosts();
-        model.addAttribute("posts", posts);
-        return "board/index";
-    }
-*/
+    /*
+        @GetMapping("/index")
+        public String showAllPosts(Model model) {
+            List<Post> posts = postService.getAllPosts();
+            model.addAttribute("posts", posts);
+            return "board/index";
+        }
+    */
     @GetMapping("/posts/{id}")
     public String getPostById(@PathVariable Long id, Model model) {
         Optional<Post> post = postService.getPostById(id);
@@ -99,7 +113,7 @@ public class PostController {
         }
     }
 
-
+/*
     @PostMapping("/edit-post")
     public String editPost(@RequestParam Long postId,
                            @RequestParam String password,
@@ -185,7 +199,7 @@ public class PostController {
     }
 
 
-
+*/
 
 
 
