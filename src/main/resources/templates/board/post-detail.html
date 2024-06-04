@@ -10,24 +10,33 @@
 
 <body>
   <div id="header-placeholder"></div>
-  <div class="container">
-    <h1 th:text="${post.title}">게시글 제목</h1>
-    <p>작성자: <span th:text="${post.author}">작성자 이름</span></p>
-    <p>작성일: <span th:text="${post.calendar}">작성 날짜</span></p>
-    <p>내용: <span th:text="${post.content}">게시글 내용</span></p>
-
-    <!-- 게시글 수정 링크 -->
-    <a href="javascript:void(0);" onclick="toggleModal(true, '/edit-post')">수정</a>
-    <!-- 게시글 삭제 링크 -->
-    <a href="javascript:void(0);" onclick="toggleModal(true, '/delete-post')">삭제</a>
+  <main class="main-content">
+    <h1 class="board-title">Q&A</h1>
+    <div class="post-actions">
+      <button class="edit-button" onclick="toggleModal(true, '/edit-post')">
+        <img src="/images/black-pencil.png" class="pencil-icon" alt="Edit Icon">수정
+      </button>
+      <button class="delete-button" onclick="toggleModal(true, '/delete-post')">
+        <img src="/images/board-delete.png" class="delete-icon" alt="Delete Icon">삭제
+      </button>
+    </div>
+    <h2 class="post-title" th:text="${post.title}">게시글 제목</h2>
+    <div class="post-meta">
+      <span class="post-author" th:text="${post.author}">작성자 이름</span>
+      <span class="post-date" th:text="${post.calendar}">작성 날짜</span>
+    </div>
+    <hr>
+    <div class="post-content" th:text="${post.content}">
+      게시글 내용
+    </div>
+    <hr>
 
     <!-- 게시글 목록으로 돌아가는 링크 -->
-    <a href="/index">게시글 목록으로 돌아가기</a>
-  </div>
-
+    <a href="/index" class="back-button">목록</a>
+  </main>
 
   <!-- 비밀번호 입력 -->
-  <div id="passwordModal" class="modal">
+  <div id="passwordModal" class="modal" style="display: none;">
     <div class="modal-content">
       <form id="passwordForm" action="" method="post">
         <input type="hidden" id="postId" name="postId" th:value="${post.id}">
@@ -41,28 +50,32 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="content-wrapper">
     <h2>운영자 답변</h2>
-      <sapn th:each="comment : ${comments}">
+    <div class="reply">
+      <span th:each="comment : ${comments}">
         <p th:text="${comment.comment}"></p>
-      </sapn>
-
+      </span>
+    </div>
   </div>
 
+  <div id="footer-placeholder"></div>
 
   <script>
-    function toggleModal(show, path) {
+    function toggleModal(show, path = '') {
       var modal = document.getElementById('passwordModal');
       var form = document.getElementById('passwordForm');
       modal.style.display = show ? 'block' : 'none';
-      form.action = path; // 액션 경로 설정
+      if (show && path) {
+        form.action = path; // 액션 경로 설정
+      }
     }
-
 
     function submitForm() {
       var form = document.getElementById('passwordForm');
       form.submit(); // 폼 제출
     }
+
     // header.html의 내용을 가져와서 플레이스홀더에 삽입합니다.
     fetch('/header.html')
       .then(response => response.text())
@@ -73,6 +86,17 @@
         console.error('Error loading header:', error);
         console.log('header.html 못 불러옴');
       });
+
+    fetch('/footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-placeholder').innerHTML = html;
+      })
+      .catch(error => {
+        console.error('Error loading footer:', error);
+        console.log('footer.html 못 불러옴');
+      });
+
     window.addEventListener('scroll', () => {
       const elements = document.querySelectorAll('.fade-in-section');
       elements.forEach((el) => {
@@ -88,7 +112,7 @@
     /* 스크립트를 추가하여 errorMessage가 존재할 경우 alert를 통해 알림창을 띄웁니다. */
     var errorMessage = "[[${errorMessage}]]";
     if (errorMessage) {
-        alert(errorMessage);
+      alert(errorMessage);
     }
   </script>
 </body>

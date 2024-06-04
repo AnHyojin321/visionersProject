@@ -1,235 +1,256 @@
 
 @font-face {
-    font-family: 'abster';
-    src: url('../font/abster-webfont.woff') format('woff');
-  }
+  font-family: "abster";
+  src: url("../font/abster-webfont.woff") format("woff");
+}
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  html {
-    height: 100%;
-    width: 100%;
-  }
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Do Hyeon", sans-serif;
+  text-align: center;
+  overflow:hidden;
+}
 
-  body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Do Hyeon', sans-serif;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("../images/beach.png") no-repeat center center ;
-    background-size: cover;
-  }
-
-  .header {
-    position: fixed;
-    padding-top:30px;
-    padding-bottom:30px;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 10;
-  }
-
-  .header h1 a {
-    text-decoration: none;
-    color: white;
-    font-size: 2.5rem;
-    font-family: 'abster';
-    padding: 100px;
-  }
-
-
-
-
-
-  .menu-bar li.dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    left: 0;
-    right: 0;
-    text-align: center; 
-    background-color: rgba(0, 0, 0, 0.7);
-    /* background-color: rgba(204, 8, 8, 0.9); */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-    padding: 10px;
-  }
-  
-  .menu-bar li:hover .dropdown-content {
-    display: block;
-    width: 100%; /* This will make the width match the parent */
-  }
-  
-  /* Make sure that the width of anchor tags inside dropdown matches the parent */
-  .menu-bar li .dropdown-content a {
-    display: block;
-    color: white;
-    padding: 10px 15px;
-    text-decoration: none;
-    text-align: center; /* Align text to the left or center, based on your preference */
-  }
-  
-
-
-  .menu-bar {
-    display: flex;
-     background: none;
-    list-style: none;
-    gap: 180px; /* 메뉴 항목 사이의 간격을 늘립니다. */
-    align-items: center;
-    padding-left: 40px; /* 왼쪽 여백을 추가합니다. */
-    padding-right: 40px; /* 오른쪽 여백을 추가합니다. */
-  }
-
-  .menu-bar ul {
-    padding: 0;
-    margin: 0;
-    display: flex;
-  }
-
-  .menu-bar li {
-    display: inline;
-    /* 항목들을 가로로 나열 */
-  }
-
-
-  .menu-bar a {
-    text-decoration: none;
-    color: white;
-    /* 글씨 색상을 검정색으로 변경 */
-    padding: 15px 30px;
-  }
-
-
-
-  .menu-bar div:hover .dropdown-content {
-    display: block;
-  }
-
-  .menu-bar li a {
-    text-decoration: none;
-    color: white;
-    padding: 30px;      /*메뉴들 사이의 간격 정리 (작품소개, 찾아보기, 팀원소개)*/
-    transition: background-color 0.4s, color 0.4s;
-  }
-
-  .menu-bar li a:hover {
-    background-color: (0, 0, 0, 0.7);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    color: white;
-  }
-
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-
-
-
-
-
-  .menu-bar .dropdown-content a{
-    color:white;
-  }
-
-  .dropdown-content a {
-    display: block;
-    padding: 10px 15px;
-    text-decoration: none;
-    color: black; /* Set the default text color to white */
-    font-size: 0.9rem;
-  }
-  .dropdown-content a:hover {
-    color: red !important;
-    text-decoration:underline;
-  }
-
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-
-
-
+body {
+  margin: 0;
+}
 
 .container {
-    width: 80%;
-    margin: 20px auto;
-    background: white;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.7);
-    margin-top:150px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
 }
 
-h1, h2 {
-    color: #333;
+.main-header {
+  width: 100%;
+  background: #FFFFFF;
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* 검색 폼 스타일링 */
-.search-form {
-    margin-bottom: 20px;
+.logo-text {
+  font-family: "abster", sans-serif;
 }
 
-.search-form input[type="text"],
-.search-form select {
-    padding: 8px;
-    margin-right: 10px;
+.main-header .logo a {
+  font-size: 2em;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
 }
 
-.search-form button {
-    padding: 8px 15px;
-    background-color: #5C7AEA;
-    color: white;
-    border: none;
-    cursor: pointer;
+.main-header .main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
 }
 
-.search-form button:hover {
-    background-color: #4258cc;
+.main-header .main-nav ul li {
+  position: relative;
 }
 
-/* 테이블 스타일 */
+.main-header .main-nav ul li a {
+  text-decoration: none;
+  color: #000;
+  padding: 10px;
+  transition: color 0.3s;
+}
+
+.main-header .main-nav ul li a:hover {
+  color: #007bff;
+}
+
+.main-header .main-nav ul li:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  padding: 10px;
+  display: block;
+  color: #000;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
+}
+.board-main-content {
+  margin-top: 50px; /* Adjusted height for the header */
+  padding: 40px;
+  flex: 1;
+   /* Background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.board-main-container {
+display: flex;
+flex-direction: column; /* Set flex direction to column */
+align-items: center;
+width: 90%;
+height: ;
+margin: 0 auto;
+}
+
+.board-title {
+font-size: 2rem;
+font-weight: bold;
+margin-bottom: 1rem; 
+text-align: center;
+}
+
+.board-search-container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 0.5rem;
+width: 83%;
+}
+
+.board-search-form {
+display: flex;
+align-items: center;
+gap: 0.5rem; 
+}
+
+.board-search-select,
+.board-search-input {
+padding: 0.5rem; 
+border: 1px solid #ddd;
+border-radius: 4px;
+font-size: 1rem;
+}
+
+.board-search-button {
+background-color: #007bff;
+color: white;
+border: none;
+padding: 0.5rem 1rem; 
+border-radius: 4px;
+cursor: pointer;
+font-size: 1rem;
+}
+
+.board-new-post-button {
+text-decoration: none;
+font-size: 1.2rem;
+color: white;
+background-color: #17ACFF;
+border-radius: 15px;
+border: 6px solid #17ACFF; 
+display: flex;
+padding: 2px;
+align-items: center;
+}
+
 .board-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+  width: 85%; 
+  border-collapse: collapse;
+  margin-top: 20px; /* Add margin to separate from the search form */
+  text-align: center;
+  margin-left:100px;
+  table-layout: fixed; /* 테이블 레이아웃을 고정 */
 }
 
-.board-table th,
-.board-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
+.board-table th, .board-table td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  word-wrap: break-word; /* 긴 단어를 줄 바꿈 */
 }
 
 .board-table th {
-    background-color: #f8f8f8;
+  background-color: #f1f1f1;
 }
 
-/* 게시글 작성 링크 스타일 */
-.new-post {
-    display: inline-block;
-    padding: 10px 20px;
-    color: white;
-    background-color: #5C7AEA;
-    text-decoration: none;
-    border-radius: 5px;
+.board-table tbody tr:hover {
+  background-color: #f9f9f9;
 }
 
-.new-post:hover {
-    background-color: #4258cc;
+.board-pagination {
+text-align: center;
+margin-top: 0.3rem; 
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 0.25rem;
+}
+
+.board-pagination .board-page-number,
+.board-pagination .board-page-nav {
+margin: 0 0.25rem;
+padding: 0.5rem 0.75rem; 
+text-decoration: none;
+color: #007bff;
+border-radius: 23px;
+cursor: pointer;
+}
+
+.board-pagination .board-page-number:hover,
+.board-pagination .board-page-nav:hover {
+background-color: #007bff;
+color: white;
+}
+
+.board-pagination .board-current-page {
+background-color: #007bff;
+color: white;
+}
+
+.board-pencil-icon {
+width: 20px;
+height: auto;
+margin-right: 5px;
+padding: 0px;
+}
+
+.footer {
+position: fixed;
+bottom: 0;
+left: 0;
+width: 100%;
+background-color: #f8f9fa;
+padding: 15px 0; 
+box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+z-index: 1000;
+height: 70px;
+}
+
+.footer-container {
+display: flex;
+justify-content: space-between;
+align-items: center; 
+width: 50%;
+margin: 0 auto;
+}
+
+.footer p {
+margin: 0; 
 }

@@ -7,33 +7,22 @@
 <link rel="stylesheet" href="/css/domestic.css">
 
 <!-- CSS 파일의 경로를 확인하고 필요에 따라 수정해 주세요 -->
-  <style>
-    #result-message {
-      background-color: white;
-      color: black;
-      padding: 10px;
-      border-radius: 5px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      font-size: 16px;
-      line-height: 1.5;
-      overflow: auto;
-      max-height: 400px;
-    }
-  </style>
 </head>
 <body>
-<div class="main">
-  <div class="container">
-    <div id="header-placeholder"></div>
-    <div id="webcam-container" class="webcam-container">
-      <iframe src="http://127.0.0.1:5000/video_feed" width="640" height="480"></iframe>
-      <button class="btn capture-button" onclick="handleCapture()">촬영하기</button>
-      <div id="result-message"></div>
+  <div class="main">
+    <div class="container">
+      <div id="header-placeholder"></div>
+        <div id="webcam-container" class="webcam-container">
+          <!-- <video id="webcam-video" class="webcam-video"></video> -->
+          <iframe src="http://127.0.0.1:5000/video_feed" width="640" height="480"></iframe>
+          <button class="btn capture-button" onclick="handleCapture()">
+              촬영하기
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
     <!-- 여기에 라우트를 나타내는 내용을 추가하려면, 별도의 페이지 링크 또는 자바스크립트 로직이 필요합니다. -->
-
+  </div>
   <!-- <script src="cameramain.html"></script>
   <script src="./result/resultok.html"></script> -->
   <!-- 필요한 JavaScript 파일을 연결하세요. -->
@@ -52,25 +41,15 @@
         });
     }
 
-
-async function handleCapture() {
-    try {
-        const response = await fetch('http://localhost:8080/detect_and_compare', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        const data = await response.json();  // JSON 응답 파싱
-        document.getElementById('result-message').innerText = data.message;
-    } catch (error) {
-        console.error("Error fetching data:", error);
-        document.getElementById('result-message').innerText = 'Error: ' + error.message;
+    function handleCapture() {
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+      canvas.width = videoElement.videoWidth;
+      canvas.height = videoElement.videoHeight;
+      context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+      const imageData = canvas.toDataURL("image/png");
+      downloadImage(imageData);
     }
-}
-
-
-
 
     function downloadImage(imageData) {
       const downloadLink = document.createElement("a");
@@ -97,7 +76,6 @@ async function handleCapture() {
       console.error('Error loading header:', error);
       console.log('header.html 못 불러옴');
     });
-
   </script>
 
 </body>

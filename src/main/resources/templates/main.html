@@ -1,5 +1,9 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en">
+=======
+<html lang="ko">
+>>>>>>> 3a8d2b6 (front 작업중)
 
 <head>
   <meta charset="UTF-8">
@@ -9,112 +13,127 @@
 </head>
 
 <body>
-  <div class="main">
-    <div class="container">
-      <div class="section section1">
-        <div id="header-placeholder"></div>
-        <div class="hero">
-          <h2>항공기 반입 물품 체크 서비스</h2>
-          <p>
-            헷갈리는 물품이 항공기에 반입 가능한지 지금 바로 확인하실 수 있습니다.
-          </p>
-          <a href="/cameramain" class="btn">촬영으로 확인하기</a>
-          <button class="btn">검색으로 확인하기</button>
+  <div id="header-placeholder"></div>
+  <main class="main-content">
+    <div class="section1">
+      <div class="hero-section">
+        <h1 class="title">안전한 비행, 신속한 체크</h1>
+        <p class="subtitle">ON-AIR에서 지금 바로 확인하기</p>
+        <div class="buttons">
+          <a href="/cameramain" class="button"><img src="/images/camera.png" class="camera-icon"> 촬영으로 확인</a>
+          <a href="#" class="button"><img src="/images/search.png" class="search-icon"> 검색으로 확인</a>
         </div>
+        <img src="/images/main-airplane.png" alt="Airplane" class="airplane">
+      </div>
+      <div class="scroll-down">
+        <img src="/images/Vector 1270.png">
       </div>
     </div>
-    <div class="section section2">
-      <div class="fade-in-section">
-        <div class="image-container">
-          <img src="../images/travel.jpg" alt="여행 이미지">
-          <div class="image-description">
-            <p class="brandstory"> BRAND STORY</p>
-            <h2>짐 챙기느라 지쳤는데, 이게 반입은 가능한지?</h2><br />
-            <h1>항공기 반입 물품 체크 서비스가 도와드립니다!</h1><br />
-            <p>여러분의 소지품이 항공기 내 반입이 가능한지 <br />신속하고 간편하게 확인해드립니다.</p>
+
+    <div class="section2 fade-in-section">
+      <h2>짐 챙기느라 지쳤는데, 이게 항공기에 반입은 가능한지?</h2>
+      <p>항공기 반입 물품을 조회하고 체크해 보세요.<br>
+        ON-AIR와 함께라면 당신의 여행이 더 즐거워질거예요</p>
+    </div>
+    <div class="section3 fade-in-section">
+      <h1>모바일로도</br>쉽고 간편하게</h1>
+      <img src="/images/mobileservice.png" class="mobile-icon">
+      <p>공항에 왔는데 항공기 반입 물품인지 헷갈리나요?<br>
+        모바일로도 On-Air 앱을 통해<br>
+        쉽게 알 수 있어요!</p>
+      </div>
+      <div class="section4 fade-in-section">
+        <h1>사진 한장으로<br>기내 반입 가능 여부 확인</h1>
+        <img src="/images/mobileservice2.png" class="mobile-icon2">
+        <p>사진 한장으로, 간단한 터치만으로,<br>
+          빠르고 쉽게 기내 반입 가능 여부를 확인해볼까요?</p>
+
+      </div>
+      <div class="section5 fade-in-section">
+        <h2 class="logo-text">VISIONERS</h2>
+        <p class="section-subtitle">TEAM MEMBER</p>
+        <div class="team-member-container">
+          <div class="team-member odd">
+            <img src="/images/seonaeface.png" alt="박선애" class="team-member-img">
+            <div class="member-details">
+              <h3>박선애</h3>
+              <p>AI 모델 개발<br>YOLOv5 활용</p>
+              <a href="#">→ Github</a>
+            </div>
+          </div>
+          <div class="team-member even">
+            <img src="/images/hyojinface.png" alt="안효진" class="team-member-img">
+            <div class="member-details">
+              <h3>안효진</h3>
+              <p>BE & DB 개발<br>DB 및 AI 모델과 연동</p>
+              <a href="#">→ Github</a>
+            </div>
+          </div>
+          <div class="team-member odd">
+            <img src="/images/hongminface.png" alt="박홍민" class="team-member-img">
+            <div class="member-details">
+              <h3>박홍민</h3>
+              <p>FE & 웹 디자인<br>모바일 애플리케이션 개발 총괄</p>
+              <a href="#">→ Github</a>
+            </div>
+          </div>
+          <div class="team-member even">
+            <img src="/images/yoobinface.png" alt="지유빈" class="team-member-img">
+            <div class="member-details">
+              <h3>지유빈</h3>
+              <p>FE & 웹 디자인<br>BE 연동 및 병합</p>
+              <a href="#">→ Github</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="section section3">
-      <div class="fade-in-section">
-        <h1>Team Member</h1>
-        <div class="person-image-container">
-          <div class="person">
-            <img src="images/seonaeface.png" class="person-image">
-            <p class="person-description">AI 모델 개발 담당</p>
-            <h3>박선애</h3>
-            <a href="https://github.com/AnHyojin321/visionersProject">Github</a>
-            <p class="person-description">AI 모델 개발 </p>
-            <p class="person-description">YOLOv5 활용</p>
-          </div>
-          <div class="person">
-            <img src="images/hyojinface.png" class="person-image">
-            <p class="person-description">BE & DB 개발 담당</p>
-            <h3>안효진</h3>
-            <a href="https://github.com/AnHyojin321/visionersProject">Github</a>
-            <p class="person-description">BE & DB 개발 담당</p>
-            <p class="person-description">DB 및 AI 모델과 연동</p>
-          </div>
-          <div class="person">
-            <img src="images/hongminface.png" class="person-image">
-            <p class="person-description">FE & 웹 디자인 담당</p>
-            <h3>박홍민</h3>
-            <a href="https://github.com/AnHyojin321/visionersProject">Github</a>
-            <p class="person-description">FE & 웹 디자인 담당</p>
-            <p class="person-description">모바일 애플리케이션 </br>개발 총괄</p>
-          </div>
-          <div class="person">
-            <img src="images/yoobinface.png" class="person-image">
-            <p class="person-description">FE & 웹 디자인 담당</p>
-            <h3>지유빈</h3>
-            <a href="https://github.com/AnHyojin321/visionersProject">Github</a>
-            <p class="person-description">FE & 웹 디자인 담당</p>
-            <p class="person-description">BE 연동 및 병합</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="section section4">
-      <div class="footer-container">
-        <div class="footer-logo">
-          <img src="../images/logo.png" />
-        </div>
-        <div class="footer-info">
-          <p>팀원: 박선애, 안효진, 박홍민, 지유빈</p>
-          <p>성결대학교 정보통신공학과 졸업작품 프로젝트</p>
-          <p>고객센터: 1234-5678 팩스번호: 123-456-7890</p>
-        </div>
-        <div class="footer-social">
-          <a href="your_facebook_url"><i class="fab fa-facebook-square"></i></a>
-          <a href="your_twitter_url"><i class="fab fa-twitter-square"></i></a>
-          <a href="your_instagram_url"><i class="fab fa-instagram"></i></a>
-          <a href="your_youtube_url"><i class="fab fa-youtube"></i></a>
-        </div>
-      </div>
-    </div>
-    <script>
-      // header.html의 내용을 가져와서 플레이스홀더에 삽입합니다.
-      fetch('/header.html')
-        .then(response => response.text())
-        .then(html => {
-          document.getElementById('header-placeholder').innerHTML = html;
-        })
-        .catch(error => {
-          console.error('Error loading header:', error);
-          console.log('header.html 못 불러옴');
-        });
-      window.addEventListener('scroll', () => {
-        const elements = document.querySelectorAll('.fade-in-section');
-        elements.forEach((el) => {
-          const position = el.getBoundingClientRect().top;
-          const windowHeight = window.innerHeight;
-          if (position - windowHeight <= 0) {
-            el.classList.add('is-visible');
-          }
-        });
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch('/header.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+      })
+      .catch(error => {
+        console.error('Error loading header:', error);
+        console.log('header.html 못 불러옴');
       });
-    </script>
+    fetch('/footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-placeholder').innerHTML = html;
+        document.getElementById('footer-placeholder').style.display = 'none'; // Initially hide the footer
+      })
+      .catch(error => {
+        console.error('Error loading footer:', error);
+        console.log('footer.html 못 불러옴');
+      });
+
+    document.querySelector('.scroll-down').addEventListener('click', function () {
+      document.querySelector('.section2').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    window.addEventListener('scroll', () => {
+      const elements = document.querySelectorAll('.fade-in-section');
+      elements.forEach((el) => {
+        const position = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (position - windowHeight <= 0) {
+          el.classList.add('is-visible');
+        }
+      });
+
+      // Show footer when scrolled to the bottom
+      const footer = document.getElementById('footer-placeholder');
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        footer.style.display = 'block';
+      } else {
+        footer.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 
 </html>

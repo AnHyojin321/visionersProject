@@ -1,27 +1,31 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VISIONERS</title>
-  <link rel="stylesheet" href="/css/cameramain.css">
+  <title>마이페이지</title>
+  <link rel="stylesheet" href="/css/mypagemain.css">
 </head>
 
 <body>
   <div id="header-placeholder"></div>
   <main class="main-content">
-  <section class="main-section">
-    <div class="hero-content">
-      <h1>항공기 반입 물품 체크 서비스</h1>
-      <p>이용하려는 비행편이 어디인지 선택해주세요</p>
-      <div class="buttons">
-        <a href="/international" class="button">국제선</a>
-        <a href="/domestic" class="button">국내선</a>
+    <div class="mypage-container">
+      <h1 class="mypage-title">마이페이지</h1>
+      <h2 class="welcome-message"><span class="username">최윤경</span>님 반가워요!</h2>
+      <div class="info-box">
+        <div class="info-item">
+          <a href="/user-info">회원 정보</a>
+        </div>
+        <div class="info-item">
+          <a href="/user-posts">내가 쓴 게시글</a>
+        </div>
+      </div>
+      <div class="logout-section">
+        <a href="/logout" class="logout-btn">로그아웃</a>
+        <a href="/delete-account" class="delete-account-btn">회원 탈퇴</a>
       </div>
     </div>
-    <img src="/images/cameramain-airplane.png" alt="Airplane" class="hero-image">
-  </section>
   </main>
   <div id="footer-placeholder"></div>
   <script>

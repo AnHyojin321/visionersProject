@@ -1,7 +1,6 @@
-
 @font-face {
-  font-family: 'abster';
-  src: url('../font/abster-webfont.woff') format('woff');
+  font-family: "abster";
+  src: url("../font/abster-webfont.woff") format("woff");
 }
 
 * {
@@ -10,227 +9,184 @@
   box-sizing: border-box;
 }
 
-html {
-  height: 100%;
-  width: 100%;
-}
-
+html,
 body {
   height: 100%;
   width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: '나눔고딕', sans-serif;
+  font-family: "Do Hyeon", sans-serif;
+  text-align: center;
 }
 
-.header {
+body {
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.main-header {
+  width: 100%;
+  background: #FFFFFF;
+  padding: 20px 0;
   position: fixed;
-  padding-top:30px;
-  padding-bottom:30px;
   top: 0;
   left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 10;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.header h1 a {
+.logo-text {
+  font-family: "abster", sans-serif;
+}
+
+.main-header .logo a {
+  font-size: 2em;
+  font-weight: bold;
+  color: black;
   text-decoration: none;
-  color: white;
-  font-size: 2.5rem;
-  font-family: 'abster';
-  padding: 100px;
 }
 
+.main-header .main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
 
-
-
-
-.menu-bar li.dropdown {
+.main-header .main-nav ul li {
   position: relative;
-  display: inline-block;
+}
+
+.main-header .main-nav ul li a {
+  text-decoration: none;
+  color: #000;
+  padding: 10px;
+  transition: color 0.3s;
+}
+
+.main-header .main-nav ul li a:hover {
+  color: #007bff;
+}
+
+.main-header .main-nav ul li:hover .dropdown-content {
+  display: block;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
+  top: 100%;
   left: 0;
-  right: 0;
-  text-align: center; 
-  background-color: rgba(0, 0, 0, 0.7);
-  /* background-color: rgba(204, 8, 8, 0.9); */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-  padding: 10px;
-}
-
-.menu-bar li:hover .dropdown-content {
-  display: block;
-  width: 100%; /* This will make the width match the parent */
-}
-
-/* Make sure that the width of anchor tags inside dropdown matches the parent */
-.menu-bar li .dropdown-content a {
-  display: block;
-  color: white;
-  padding: 10px 15px;
-  text-decoration: none;
-  text-align: center; /* Align text to the left or center, based on your preference */
-}
-
-
-
-.menu-bar {
-  display: flex;
-  list-style: none;
-  gap: 180px; /* 메뉴 항목 사이의 간격을 늘립니다. */
-  align-items: center;
-  padding-left: 40px; /* 왼쪽 여백을 추가합니다. */
-  padding-right: 40px; /* 오른쪽 여백을 추가합니다. */
-}
-
-.menu-bar ul {
-  padding: 0;
-  margin: 0;
-  display: flex;
-}
-
-.menu-bar li {
-  display: inline;
-  /* 항목들을 가로로 나열 */
-}
-
-
-.menu-bar a {
-  text-decoration: none;
-  color: black;
-  /* 글씨 색상을 검정색으로 변경 */
-  padding: 15px 30px;
-}
-
-
-
-.menu-bar div:hover .dropdown-content {
-  display: block;
-}
-
-.menu-bar li a {
-  text-decoration: none;
-  color: white;
-  padding: 30px;      /*메뉴들 사이의 간격 정리 (작품소개, 찾아보기, 팀원소개)*/
-  transition: background-color 0.4s, color 0.4s;
-}
-
-.menu-bar li a:hover {
-  background-color: (0, 0, 0, 0.7);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  color: white;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-
-
-
-
-.menu-bar .dropdown-content a{
-  color:white;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 
 .dropdown-content a {
+  padding: 10px;
   display: block;
-  padding: 10px 15px;
-  text-decoration: none;
-  color: white; /* Set the default text color to white */
-  font-size: 0.9rem;
+  color: #000;
+  text-align: left;
 }
+
 .dropdown-content a:hover {
-  color: red !important;
-  text-decoration:underline;
+  background-color: #f0f0f0;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
+.main-section {
+  background-color:#fefefe;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 80px; /* Adjust to position content below header */
+  padding-bottom: 40px; /* Space for footer */
 }
 
-  .main .container {
-    width: 100%;
-    min-height: 100vh; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url("../images/airplane.jpg") no-repeat;
-    background-repeat: no-repeat;
-    background-size: cover; 
-    background-attachment: fixed; 
-    background-position: center; 
-    z-index: -1; 
+.hero-content {
+  margin-bottom: 10px;
 }
 
+.hero-content h1 {
+  font-size: 2.0em;
+  margin-bottom: 0.25em;
+  margin-top: 16px;
+}
 
-  .hero h2 {
-    font-family: 'abster';
-    /* Assuming you want to use the custom font here */
-    font-size: 3rem;
-    color: white;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+.hero-content p {
+  font-size: 1.0rem;
+  margin-bottom: 0.5em;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.buttons a {
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 2px solid #ACE1FF;
+  border-radius: 10px;
+  color: black;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.buttons a:hover {
+  background-color: #ACE1FF;
+  color: white;
+}
+
+.hero-image {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1000px;
+  height: 390px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
   }
-
-  .hero p {
-    font-family: 'abster';
-    /* Assuming you want to use the custom font here */
-    font-size: 1.25rem;
-    color: white;
-    margin-bottom: 2rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  50% {
+    transform: translatey(-20px);
   }
-
-  .btn {
-    padding: 10px 20px;
-    margin: 15px 0px 0;
-    background: none;
-    border: 2px solid rgba(192, 88, 23, 0.8);
-    border-radius: 20px;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.4s;
-    text-decoration: none;
-    margin-top: 0;
+  100% {
+    transform: translatey(0px);
   }
+}
 
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f8f9fa;
+  padding: 15px 0; 
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  height: 70px;
+}
 
-  .btn:hover {
-    background-color: rgb(113, 64, 35);
-  }
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  width: 50%;
+  margin: 0 auto;
+}
 
-  .section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    width: 100%;
-    margin: 0; 
-    padding: 0; 
-  }
-
-  .section1 {
-    padding: 50px 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-      url("../images/airplane.jpg") no-repeat center center scroll;
-    background-size: cover;
-    min-height: 100vh;
-    margin-bottom: 0; /* 섹션 1의 하단 마진 제거 */
-    padding-bottom: 0; /* 섹션 1의 하단 패딩 제거 */
-  }
+.footer p {
+  margin: 0; 
+}
