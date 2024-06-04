@@ -6,7 +6,20 @@
 <title>VISIONERS</title>
 <link rel="stylesheet" href="/css/domestic.css">
 
-<!-- CSS 파일의 경로를 확인하고 필요에 따라 수정해 주세요 -->
+  <!-- CSS 파일의 경로를 확인하고 필요에 따라 수정해 주세요 -->
+  <style>
+    #result-message {
+      background-color: white;
+      color: black;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      font-size: 16px;
+      line-height: 1.5;
+      overflow: auto;
+      max-height: 400px;
+    }
+  </style>
 </head>
 <body>
   <div class="main">
@@ -18,6 +31,7 @@
           <button class="btn capture-button" onclick="handleCapture()">
               촬영하기
           </button>
+          <div id="result-message"></div>
         </div>
       </div>
     </div>
@@ -41,15 +55,21 @@
         });
     }
 
-    function handleCapture() {
-      const canvas = document.createElement("canvas");
-      const context = canvas.getContext("2d");
-      canvas.width = videoElement.videoWidth;
-      canvas.height = videoElement.videoHeight;
-      context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-      const imageData = canvas.toDataURL("image/png");
-      downloadImage(imageData);
+    async function handleCapture() {
+    try {
+        const response = await fetch('http://localhost:8080/detect_and_compare', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();  // JSON 응답 파싱
+        document.getElementById('result-message').innerText = data.message;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        document.getElementById('result-message').innerText = 'Error: ' + error.message;
     }
+}
 
     function downloadImage(imageData) {
       const downloadLink = document.createElement("a");

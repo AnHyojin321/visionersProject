@@ -35,26 +35,22 @@ def video_feed():
     return Response(gen_frames(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
-@app.route('/detect_objects', methods=['GET'])
+@app.route('/detect_objects', methods=['POST'])
 def detect_objects():
     cap = cv2.VideoCapture(0)
     success, frame = cap.read()
-    cap.release()  # 웹캠 리소스를 해제합니다.
+    cap.release()  # 웹캠 리소스를 해제
     if success:
         results = model(frame)
-        objects = results.pandas().xyxy[0].to_dict(orient="records")
-        jsonObjs = json.dumps(objects)
-        jsonObjs = json.loads(jsonObjs)
-        print("로그테스트")
-
-        for jsonObj in jsonObjs:
-            print(jsonObj['name'])
-            print(jsonObj['confidence'])
-        # TODO
-        # DB와 연결 후 데이터 비교 및 결과 리턴(SELECT 결과 있으면 x리턴 등등)
-        print("로그테스트")
-        return jsonify(objects)
-    return jsonify([])
+        # 인식된 객체들 중에서 이름 정보만 추출
+        names = [obj['name'] for obj in results.pandas().xyxy[0].to_dict(orient="records")]
+        # 스프링부트 서버의 특정 API로 JSON 데이터를 POST
+        try:
+            response = requests.post('http://localhost:8080/receive_objects', json={'names': names})
+            return response.text  # 스프링부트 서버로부터의 응답을 반환
+        except requests.exceptions.RequestException as e:
+            return str(e), 500
+    return jsonify([]), 404
 
 
 # 기본적인 127.0.0.1:5000번 포트로 접속
