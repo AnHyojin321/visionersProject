@@ -1,6 +1,7 @@
 package com.example.visioners.service;
 
 import com.example.visioners.dto.Post;
+import com.example.visioners.dto.SignUp;
 import com.example.visioners.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,8 +24,8 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public void savePost(String title, String author, String content, Timestamp calendar) {
-        postRepository.postIndex(title, author, content, calendar);
+    public void savePost(String title, String content, Timestamp calendar) {
+        postRepository.postIndex(title, content, calendar);
     }
 
     public Page<Post> getPosts(Pageable pageable) {
@@ -43,9 +44,6 @@ public class PostService {
         return postRepository.findByTitleContaining(title);
     }
 
-    public List<Post> searchByAuthor(String author) {
-        return postRepository.findByAuthorContaining(author);
-    }
 
     public void save(Post existingPost) {
 
@@ -56,9 +54,6 @@ public class PostService {
                 new ArrayList<>();
     }
 
-    public List<Post> findByAuthorContaining(String author) {
-        return postRepository.findByAuthorContaining(author) != null ? postRepository.findByAuthorContaining(author) :
-                new ArrayList<>();
-    }
+
 
 }

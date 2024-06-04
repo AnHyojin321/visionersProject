@@ -17,10 +17,9 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO visioners.post(title, author, content, calendar) " +
-            "VALUES(:title, :author, :content, :calendar)", nativeQuery = true)
+    @Query(value = "INSERT INTO visioners.post(title, content, calendar) " +
+            "VALUES(:title, :content, :calendar)", nativeQuery = true)
     public void postIndex(@Param("title") String title,
-                          @Param("author") String author,
                           @Param("content") String content,
                           @Param("calendar") Timestamp calendar);
 
@@ -29,7 +28,5 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     // 제목에 특정 키워드를 포함하는 게시물을 찾는 쿼리 메서드
     List<Post> findByTitleContaining(String keyword);
 
-    // 작성자에 특정 키워드를 포함하는 게시물을 찾는  메서드
-    List<Post> findByAuthorContaining(String keyword);
 
 }

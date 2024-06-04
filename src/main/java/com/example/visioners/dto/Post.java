@@ -14,7 +14,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private String author;
+
     private String content;
     private LocalDate calendar;
 
@@ -38,15 +38,6 @@ public class Post {
         this.title = title;
     }
 
-    public String getAuthor() {
-
-        return author;
-    }
-
-    public void setAuthor(String author) {
-
-        this.author = author;
-    }
 
     public String getContent() {
 

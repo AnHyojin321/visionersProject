@@ -55,23 +55,12 @@ public class PostController {
 
     @PostMapping("/board")
     public String savePost(@RequestParam String title,
-                           @RequestParam String content,
-                           Principal principal) { // Principal 객체 추가
-
-        // 현재 로그인한 사용자의 username 가져오기
-        String username = principal.getName();
-
-        // username을 기반으로 회원 정보 조회
-        SignUp author = signUpRepository.findByUsername(username).orElseThrow(
-                () -> new UsernameNotFoundException("User not found")
-        );
-
+                           @RequestParam String content) {
         LocalDate currentDate = LocalDate.now();
 
         Post post = new Post();
 
         post.setTitle(title);
-     /*   post.setAuthor(author);*/ // SignUp 엔티티를 직접 할당
         post.setContent(content);
         post.setCalendar(currentDate);
 
