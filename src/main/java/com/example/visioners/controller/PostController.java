@@ -18,6 +18,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.security.Principal;
 import java.time.LocalDate;
@@ -64,6 +66,16 @@ public class PostController {
         post.setContent(content);
         post.setCalendar(currentDate);
 
+        // 현재 로그인한 사용자의 정보를 가져옵니다.
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName(); // 로그인한 사용자의 username
+
+        // 게시글 작성자로 username 설정
+        post.setAuthor(username);
+
+        // 데이터베이스에 게시글 저장
+        postRepository.save(post);
+
         // 데이터베이스에 저장
         postRepository.save(post);
 
@@ -95,6 +107,7 @@ public class PostController {
             List<Comment> comments = commentService.getCommentsByPostId(id);
             model.addAttribute("post", post.get());
             model.addAttribute("comments", comments);
+
             return "board/post-detail";
         } else {
             model.addAttribute("error", "해당 게시글을 찾을 수 없습니다.");

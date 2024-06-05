@@ -35,8 +35,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr th:each="post : ${posts.content}">
-              <td th:text="${post.id}"></td>
+            <tr th:each="post, stat : ${posts.content}">
+              <td th:text="${stat.index + 1}"></td>
               <td>
                 <a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}"></a>
               </td>

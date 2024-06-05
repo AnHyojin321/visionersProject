@@ -13,6 +13,8 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
+
+    List<Post> findByAuthor(String author);
     Page<Post> findAll(Pageable pageable);
 
     @Transactional

@@ -9,39 +9,39 @@
     <link rel="stylesheet" href="/css/login.css">
   </head>
 <body>
-  <div id="header-placeholder"></div>
-    <main class="main-content">
-      <main class="main">
-        <div class="login-container">
-          <h1>로그인</h1>
-          <form action="/login" method="post">
-            <div>
-              <label for="username">아이디</label>
-              <input type="text" id="username" name="username" required>
-            </div>
-            <div>
-              <label for="password">비밀번호</label>
-              <input type="password" id="password" name="password" required>
-            </div>
-            <div>
-              <button type="submit">로그인</button>
-            </div>
-          </form>
-    
-          <div class="signup-forgotpw">
-            <a href="/signup">회원가입</a>
-            <span class="separator">|</span>
-            <a href="/adminLogin" id="admin-login-btn">운영자 로그인</a>
-            <span class="separator">|</span>
-            <a href="/forgot-password" class="forgot-password">비밀번호 찾기</a>
-          </div>
-    
-          <div class="social-login">
-            <a href="#" id="kakao-login-btn">카카오 로그인</a>
-          </div>
+<div id="header-placeholder"></div>
+<main class="main-content">
+  <section class="login">
+    <div class="login-container">
+      <h1>로그인</h1>
+      <form action="/login" method="post">
+        <div>
+          <label for="username">아이디</label>
+          <input type="text" id="username" name="username" required>
         </div>
-      </main>
-    </main>
+        <div>
+          <label for="password">비밀번호</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+          <button type="submit">로그인</button>
+        </div>
+      </form>
+
+      <div class="signup-forgotpw">
+        <a href="/signup">회원가입</a>
+        <span class="separator">|</span>
+        <a href="/adminLogin" id="admin-login-btn">운영자 로그인</a>
+        <span class="separator">|</span>
+        <a href="/forgot-password" class="forgot-password">비밀번호 찾기</a>
+      </div>
+
+      <div class="social-login">
+        <a href="#" id="kakao-login-btn">카카오 로그인</a>
+      </div>
+    </div>
+  </section>
+</main>
     <div id="footer-placeholder"></div>
     <script>
       fetch('/header.html')
