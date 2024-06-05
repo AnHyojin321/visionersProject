@@ -1,104 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VISIONERS</title>
   <link rel="stylesheet" href="/css/domestic.css">
-
-  <!-- CSS 파일의 경로를 확인하고 필요에 따라 수정해 주세요 -->
-  <style>
-    #result-message {
-      background-color: white;
-      color: black;
-      padding: 10px;
-      border-radius: 5px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      font-size: 16px;
-      line-height: 1.5;
-      overflow: auto;
-      max-height: 400px;
-    }
-  </style>
 </head>
 <body>
-<div class="main">
-  <div class="container">
-    <div id="header-placeholder"></div>
-    <div id="webcam-container" class="webcam-container">
-      <iframe src="http://127.0.0.1:5000/video_feed" width="640" height="480"></iframe>
-      <button class="btn capture-button" onclick="handleCapture()">촬영하기</button>
-      <div id="result-message"></div>
-    </div>
+<div id="header-placeholder"></div>
+<div class="main-content">
+  <h2>On-Air</h2>
+  <p>항공기 반입 물품 체크 서비스</p>
+  <button class="btn capture-button" onclick="handleCapture()">
+    촬영하기
+  </button>
+  <div class="webcam-container">
+    <iframe src="http://127.0.0.1:5000/video_feed" width="640" height="480"></iframe>
   </div>
 </div>
-<!-- 여기에 라우트를 나타내는 내용을 추가하려면, 별도의 페이지 링크 또는 자바스크립트 로직이 필요합니다. -->
 
-<!-- <script src="cameramain.html"></script>
-<script src="./result/resultok.html"></script> -->
-<!-- 필요한 JavaScript 파일을 연결하세요. -->
+<!-- Modal -->
+<div id="result-modal" class="modal">
+  <div class="modal-content">
+    <p id="result-message"></p>
+    <button class="modal-button" onclick="closeModal()">재촬영</button>
+    <button class="modal-button" onclick="closeModal()">닫기</button>
+  </div>
+</div>
 
 <script>
-  const videoElement = document.getElementById('webcam-video');
+  fetch('/header.html')
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById('header-placeholder').innerHTML = html;
+    })
+    .catch(error => {
+      console.error('Error loading header:', error);
+      console.log('header.html 못 불러옴');
+    });
 
-  function accessWebcam() {
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then(stream => {
-        videoElement.srcObject = stream;
-        videoElement.play();
-      })
-      .catch(error => {
-        console.error("웹캠에 접근 실패:", error);
-      });
-  }
-
-
-async function handleCapture() {
-  try {
-      const response = await fetch('http://localhost:8080/detect_and_compare', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          }
+  async function handleCapture() {
+    try {
+      const response = await fetch('http://127.0.0.1:5000/detect_objects', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
       const data = await response.json();  // JSON 응답 파싱
       document.getElementById('result-message').innerText = data.message;
-  } catch (error) {
+      openModal();
+    } catch (error) {
       console.error("Error fetching data:", error);
       document.getElementById('result-message').innerText = 'Error: ' + error.message;
-  }
-}
-
-
-
-
-  function downloadImage(imageData) {
-    const downloadLink = document.createElement("a");
-    downloadLink.href = imageData;
-    downloadLink.download = "captured_image.png";
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
+      openModal();
+    }
   }
 
-  function handlePersonClick(person) {
-    console.log(person + ' clicked');
-    // Add your logic for showing person description here
+  function openModal() {
+    document.getElementById('result-modal').style.display = "flex";
   }
 
-  window.onload = accessWebcam;
-  // header.html의 내용을 가져와서 플레이스홀더에 삽입합니다.
-  fetch('/header.html')
-  .then(response => response.text())
-  .then(html => {
-    document.getElementById('header-placeholder').innerHTML = html;
-  })
-  .catch(error => {
-    console.error('Error loading header:', error);
-    console.log('header.html 못 불러옴');
-  });
-
+  function closeModal() {
+    document.getElementById('result-modal').style.display = "none";
+  }
 </script>
-
 </body>
 </html>

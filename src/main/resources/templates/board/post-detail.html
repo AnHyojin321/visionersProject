@@ -24,6 +24,8 @@
     <div class="post-meta">
       <span class="post-date" th:text="${post.calendar}">작성 날짜</span>
     </div>
+    <p><strong>작성자</strong> <span th:text="${#httpServletRequest.remoteUser}"></span></p>
+
     <hr>
     <div class="post-content" th:text="${post.content}">
       게시글 내용
