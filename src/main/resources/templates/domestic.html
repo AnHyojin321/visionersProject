@@ -24,7 +24,7 @@
   <div class="modal-content">
     <p id="result-message"></p>
     <button class="modal-button" onclick="handleReCapture()">재촬영</button>
-    <button class="modal-button" onclick="closeModal()">닫기</button>
+    <button class="modal-button" onclick="redirectToMain()">닫기</button>
   </div>
 </div>
 
@@ -70,6 +70,11 @@
   function closeModal() {
     document.getElementById('result-modal').style.display = "none";
   }
+
+  function redirectToMain() {
+  window.location.href = '/main'; // 사용자를 '/main' 경로로 리디렉션
+}
+
 </script>
 </body>
 </html>
