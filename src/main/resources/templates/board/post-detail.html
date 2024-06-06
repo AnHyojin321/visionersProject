@@ -13,7 +13,7 @@
   <main class="main-content">
     <h1 class="board-title">Q&A</h1>
     <div class="post-actions">
-      <button class="edit-button" onclick="toggleModal(true, '/edit-post')">
+      <button class="edit-button" onclick="toggleModal(true)">
         <img src="/images/black-pencil.png" class="pencil-icon" alt="Edit Icon">수정
       </button>
       <button class="delete-button" onclick="toggleModal(true, '/delete-post')">
@@ -38,7 +38,7 @@
   <!-- 비밀번호 입력 -->
   <div id="passwordModal" class="modal" style="display: none;">
     <div class="modal-content">
-      <form id="passwordForm" action="" method="post">
+      <form id="passwordForm" action="/verify-password" method="post">
         <input type="hidden" id="postId" name="postId" th:value="${post.id}">
         <label for="password">비밀번호: </label>
         <input type="password" id="password" name="password" required>

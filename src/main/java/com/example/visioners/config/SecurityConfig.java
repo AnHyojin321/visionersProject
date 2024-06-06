@@ -26,10 +26,14 @@ public class SecurityConfig {
                 )
                 .formLogin(formLogin ->
                         formLogin
-                                .loginPage("/login") // 로그인 페이지 설정
-                                .defaultSuccessUrl("/main", true) // 로그인 성공 시 리다이렉트할 URL 설정
-                                .failureUrl("/login?error=true") // 로그인 실패 시 리다이렉트할 URL 설정
-                                .permitAll() // 로그인 폼에 대한 접근을 허용
+                                // 로그인 페이지 설정
+                                .loginPage("/login")
+                                // 로그인 성공 시 리다이렉트할 URL 설정
+                                .defaultSuccessUrl("/main", true)
+                                // 로그인 실패 시 리다이렉트할 URL 설정
+                                .failureUrl("/login?error=true")
+                                // 로그인 폼에 대한 접근을 허용
+                                .permitAll()
                 )
                 .logout(logout ->
                         logout

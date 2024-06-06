@@ -57,7 +57,9 @@
     <tbody>
     <tr th:each="post, stat : ${posts}">
         <td th:text="${stat.index + 1}"></td>
-        <td th:text="${post.title}"></td>
+        <td>
+            <a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}"></a>
+        </td>
         <td th:text="${post.calendar}"></td>
     </tr>
     </tbody>

@@ -2,6 +2,7 @@ package com.example.visioners.controller;
 
 import com.example.visioners.dto.Comment;
 import com.example.visioners.dto.Post;
+import com.example.visioners.repository.PostRepository;
 import com.example.visioners.service.CommentService;
 import com.example.visioners.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,10 @@ import java.util.Optional;
 public class AdminController {
     private final PostService postService;
     private final CommentService commentService;
+
+    @Autowired
+    private PostRepository postRepository;
+
 
     @Autowired
     public AdminController(PostService postService, CommentService commentService) {
@@ -75,7 +80,8 @@ public class AdminController {
     }
 
     @PostMapping("/admin/posts/{id}/comments")
-    public String addComment(@PathVariable Long id, @RequestParam String commentContent) {
+    public String addComment(@PathVariable Long id,
+                             @RequestParam String commentContent) {
         Optional<Post> post = postService.getPostById(id);
         if (post.isPresent()) {
             Comment comment = new Comment(commentContent, post.get());
@@ -87,7 +93,9 @@ public class AdminController {
     }
 
     @PostMapping("/admin/posts/{postId}/comments/{commentId}")
-    public String updateComment(@PathVariable Long postId, @PathVariable Long commentId, @RequestParam String commentContent) {
+    public String updateComment(@PathVariable Long postId,
+                                @PathVariable Long commentId,
+                                @RequestParam String commentContent) {
         Optional<Comment> comment = commentService.getCommentById(commentId);
         if (comment.isPresent()) {
             Comment existingComment = comment.get();
@@ -98,4 +106,13 @@ public class AdminController {
             return "redirect:/admin?error=commentNotFound";
         }
     }
+
+    @PostMapping("/admin/deletePosts")
+    public String deleteSelectedPosts(@RequestParam List<Long> selectedIds) {
+        for (Long id : selectedIds) {
+            postRepository.deleteById(id);
+        }
+        return "redirect:/admin";
+    }
+
 }
