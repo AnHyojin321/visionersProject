@@ -101,108 +101,81 @@ public class PostController {
         }
     */
     @GetMapping("/posts/{id}")
-    public String getPostById(@PathVariable Long id, Model model) {
+    public String getPostById(@PathVariable Long id, Model model, Principal principal) {
         Optional<Post> post = postService.getPostById(id);
         if (post.isPresent()) {
             List<Comment> comments = commentService.getCommentsByPostId(id);
             model.addAttribute("post", post.get());
             model.addAttribute("comments", comments);
-
+            model.addAttribute("currentUserName", principal.getName()); // 현재 로그인한 사용자 이름 추가
             return "board/post-detail";
         } else {
             model.addAttribute("error", "해당 게시글을 찾을 수 없습니다.");
-            return "errorPage";  //아직 에러 페이지 만들진 않음
+            return "errorPage"; // 아직 에러 페이지 만들지 않음
         }
     }
 
-/*
-    @PostMapping("/edit-post")
-    public String editPost(@RequestParam Long postId,
-                           @RequestParam String password,
-                           Model model) {
-        // 데이터베이스에서  postId의 게시물 가져오기
-        Optional<Post> optionalPost = postService.getPostById(postId);
 
-        if (optionalPost.isPresent()) {
-            Post post = optionalPost.get();
-            // 입력된 비밀번호와 저장된 비밀번호를 비교
-            if (post.getPassword().equals(password)) {
-                // 비밀번호가 일치하면 수정 페이지로 이동
-                model.addAttribute("post", post);
-                return "board/edit"; // 수정 페이지로 이동
-            } else {
-                // 비밀번호가 일치하지 않을 때 메시지를 추가하여 수정 페이지로 이동
-                model.addAttribute("errorMessage", "비밀번호가 일치하지 않습니다.");
-                model.addAttribute("post", post); // 페이지 상태를 그대로 유지
-                return "board/post-detail"; // 수정 페이지로 이동
-            }
-        } else {
-            System.out.println("해당하는 게시물을 찾을 수 없습니다.");
-        }
-
-        return "redirect:/index";
+    private String getCurrentUserName() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getName();
     }
 
 
+    @GetMapping("/edit-post/{postId}")  // 수정 페이지는 GET 요청을 사용해야 합니다.
+    public String editPost(@PathVariable Long postId, Model model) {
+        String currentUserName = getCurrentUserName();
+        return postService.getPostById(postId)
+                .map(post -> {
+                    if (post.getAuthor().equals(currentUserName)) {
+                        model.addAttribute("post", post);
+                        return "board/edit";
+                    } else {
+                        model.addAttribute("errorMessage", "수정 권한이 없습니다.");
+                        return "board/post-detail";
+                    }
+                }).orElse("redirect:/index");
+    }
 
-    @PostMapping("/update-post")
-    public String updatePost(@RequestParam Long id,
+    @PostMapping("/update-post/{id}")
+    public String updatePost(@PathVariable Long id,
                              @RequestParam(required = false) String title,
-                             @RequestParam(required = false) String author,
                              @RequestParam(required = false) String content,
-                             @RequestParam String password,
+                             RedirectAttributes redirectAttributes,
                              Model model) {
-        Optional<Post> optionalPost = postService.getPostById(id);
-
-        if (optionalPost.isPresent()) {
-            Post post = optionalPost.get();
-            if (post.getPassword().equals(password)) {
-                if (title != null) post.setTitle(title);
-                if (author != null) post.setAuthor(author);
-                if (content != null) post.setContent(content);
-                // 작성일 변경 없이 저장
-                postRepository.save(post);
-
-
-                return "redirect:/index";
-            } else {
-                // 비밀번호가 일치하지 않을 때 메시지를 추가하여 수정 페이지로 이동
-                model.addAttribute("errorMessage", "비밀번호가 일치하지 않습니다.");
-                model.addAttribute("post", post); // 페이지 상태를 그대로 유지
-                return "board/edit"; // 수정 페이지로 이동
-            }
-        }
-        return "edit";
+        String currentUserName = getCurrentUserName();
+        return postService.getPostById(id)
+                .map(post -> {
+                    if (post.getAuthor().equals(currentUserName)) {
+                        post.setTitle(title);
+                        post.setContent(content);
+                        postRepository.save(post);
+                        redirectAttributes.addFlashAttribute("message", "게시글이 수정되었습니다");
+                        return "redirect:/index";
+                    } else {
+                        model.addAttribute("errorMessage", "수정 권한이 없습니다.");
+                        return "board/edit";
+                    }
+                }).orElse("redirect:/index");
     }
 
-
-    @PostMapping("/delete-post")
-    public String deletePost(@RequestParam Long postId,
-                             @RequestParam String password,
+    @PostMapping("/delete-post/{postId}")
+    public String deletePost(@PathVariable Long postId,
+                             RedirectAttributes redirectAttributes,
                              Model model) {
-        Optional<Post> optionalPost = postService.getPostById(postId);
-
-        if (optionalPost.isPresent()) {
-            Post post = optionalPost.get();
-            if (post.getPassword().equals(password)) {
-                postRepository.delete(post);
-
-                return "redirect:/index";
-            } else {
-                // 비밀번호가 일치하지 않을 때 메시지를 추가하여 수정 페이지로 이동
-                model.addAttribute("errorMessage", "비밀번호가 일치하지 않습니다.");
-                model.addAttribute("post", post); // 페이지 상태를 그대로 유지
-                return "board/post-detail"; // 수정 페이지로 이동
-            }
-        } else {
-            System.out.println("해당하는 게시물을 찾을 수 없습니다.");
-            return "redirect:/index";
-        }
+        String currentUserName = getCurrentUserName();
+        return postService.getPostById(postId)
+                .map(post -> {
+                    if (post.getAuthor().equals(currentUserName)) {
+                        postRepository.delete(post);
+                        redirectAttributes.addFlashAttribute("message", "게시글이 삭제되었습니다");
+                        return "redirect:/index";
+                    } else {
+                        model.addAttribute("errorMessage", "삭제 권한이 없습니다.");
+                        return "board/post-detail";
+                    }
+                }).orElse("redirect:/index");
     }
-
-
-*/
-
 
 
 }

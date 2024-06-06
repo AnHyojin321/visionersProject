@@ -65,7 +65,7 @@
   </main>
   <div id="footer-placeholder"></div>
 
-  <script>
+  <script type="text/javascript">
     fetch('/header.html')
       .then(response => response.text())
       .then(html => {
@@ -95,13 +95,19 @@
         }
       });
     });
-    
-  </script>
-  <script type="text/javascript">
+
     var errorMessage = "[[${errorMessage}]]";
     if (errorMessage) {
       alert(errorMessage);
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+    // 서버에서 전달된 메시지를 확인합니다.
+    var message = "[[${message}]]";
+    if (message && message !== 'null' && message !== '') {
+      alert(message);  // 메시지가 존재하면 알림창을 표시합니다.
+    }
+  });
   </script>
 </body>
 
